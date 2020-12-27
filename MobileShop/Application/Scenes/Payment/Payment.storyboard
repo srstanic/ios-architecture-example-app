@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XZa-XS-df1">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Payment View Controller-->
+        <scene sceneID="7PC-xA-yrm">
+            <objects>
+                <viewController id="XZa-XS-df1" customClass="PaymentViewController" customModule="MobileShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1aX-Px-w07">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="338-JC-ugJ">
+                                <rect key="frame" x="83" y="410.5" width="248" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Amount Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYC-F2-qKe">
+                                        <rect key="frame" x="0.0" y="0.0" width="119" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhj-ii-jGv">
+                                        <rect key="frame" x="129" y="0.0" width="119" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charge Note" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TS-Y8-Tah">
+                                <rect key="frame" x="83" y="444.5" width="248" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weu-S7-dlI">
+                                <rect key="frame" x="184" y="481.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="confirmPurchase:" destination="XZa-XS-df1" eventType="touchUpInside" id="GKd-Zu-S2C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7zC-nH-bRX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6TS-Y8-Tah" firstAttribute="centerY" secondItem="7zC-nH-bRX" secondAttribute="centerY" id="9tO-yg-YEg"/>
+                            <constraint firstItem="weu-S7-dlI" firstAttribute="centerX" secondItem="6TS-Y8-Tah" secondAttribute="centerX" id="AXr-cr-Ezc"/>
+                            <constraint firstItem="6TS-Y8-Tah" firstAttribute="top" secondItem="338-JC-ugJ" secondAttribute="bottom" constant="10" id="DSe-51-vIn"/>
+                            <constraint firstItem="6TS-Y8-Tah" firstAttribute="centerX" secondItem="7zC-nH-bRX" secondAttribute="centerX" id="WP3-MT-SS1"/>
+                            <constraint firstItem="weu-S7-dlI" firstAttribute="top" secondItem="6TS-Y8-Tah" secondAttribute="bottom" constant="20" id="Zvg-1D-Q9f"/>
+                            <constraint firstItem="338-JC-ugJ" firstAttribute="width" secondItem="6TS-Y8-Tah" secondAttribute="width" id="f9s-Pf-3pJ"/>
+                            <constraint firstItem="6TS-Y8-Tah" firstAttribute="width" secondItem="1aX-Px-w07" secondAttribute="width" multiplier="0.6" id="iZr-sY-lAz"/>
+                            <constraint firstItem="338-JC-ugJ" firstAttribute="centerX" secondItem="7zC-nH-bRX" secondAttribute="centerX" id="j6N-aJ-b0s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="amountTitleLabel" destination="hYC-F2-qKe" id="zTQ-Fi-cCH"/>
+                        <outlet property="amountValueLabel" destination="nhj-ii-jGv" id="xga-Y9-f7Y"/>
+                        <outlet property="chargeNoteLabel" destination="6TS-Y8-Tah" id="FFh-LA-PKk"/>
+                        <outlet property="confirmPurchaseButton" destination="weu-S7-dlI" id="Hdn-ZL-hwB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3XV-kK-b7Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317" y="30"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

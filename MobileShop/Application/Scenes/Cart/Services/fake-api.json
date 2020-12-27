@@ -1,0 +1,20 @@
+{
+    "cart": {
+        "id": "1",
+        "productItems": [
+            { "productId": "1", "quantity": 2 },
+            { "productId": "2", "quantity": 1 },
+            { "productId": "3", "quantity": 1 }
+        ],
+        "discountIds": ["1", "2"]
+    },
+    "products": [
+        { "id": "1", "title": "Cotton T-shirt", "price": 19.99 },
+        { "id": "2", "title": "Premium T-shirt", "price": 29.99 },
+        { "id": "3", "title": "Baseball cap", "price": 21.99 }
+    ],
+    "discounts": [
+        { "id": "1", "title": "Coupon discount", "amountAsPercentage": 5, "productId": nil },
+        { "id": "1", "title": "Clearance", "amountAsPercentage": 10, "productId": "2" }
+    ]
+}
