@@ -234,18 +234,10 @@
 		08209CB925716A1200FE51F5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				08209C90257169DE00FE51F5 /* LaunchScreen.storyboard */,
-				08209C85257169DB00FE51F5 /* AppDelegate.swift */,
-				08209C87257169DB00FE51F5 /* SceneDelegate.swift */,
-				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
-				08CE88FB25791EC400BEE7EF /* Scenes */,
-				08CE88FD25791F4000BEE7EF /* MobileShopRemoteAPI */,
-				08CE88FC25791F2400BEE7EF /* Networking */,
-				0878FF44257996C9007E037E /* Tracking */,
-				0839E6A5257A7B89006FB959 /* View */,
-				084AAA51257E972500DE7EE1 /* Localization */,
-				086BB762257E5D6E00249899 /* Environment */,
-				08209C8E257169DE00FE51F5 /* Assets.xcassets */,
+				08FDD95525AF155C00A5D0AE /* Launch */,
+				08209CC525716C9500FE51F5 /* Cart */,
+				083D8F5C2577D6F9006F9794 /* Payment */,
+				08FDD95225AF141A00A5D0AE /* Common */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -445,15 +437,6 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
-		08CE88FB25791EC400BEE7EF /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				08209CC525716C9500FE51F5 /* Cart */,
-				083D8F5C2577D6F9006F9794 /* Payment */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		08CE88FC25791F2400BEE7EF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +453,31 @@
 				0878FEF9257928D4007E037E /* RemoteApiClient+MobileShop.swift */,
 			);
 			path = MobileShopRemoteAPI;
+			sourceTree = "<group>";
+		};
+		08FDD95225AF141A00A5D0AE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				08CE88FD25791F4000BEE7EF /* MobileShopRemoteAPI */,
+				08CE88FC25791F2400BEE7EF /* Networking */,
+				0878FF44257996C9007E037E /* Tracking */,
+				0839E6A5257A7B89006FB959 /* View */,
+				084AAA51257E972500DE7EE1 /* Localization */,
+				086BB762257E5D6E00249899 /* Environment */,
+				08209C8E257169DE00FE51F5 /* Assets.xcassets */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		08FDD95525AF155C00A5D0AE /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				08209C90257169DE00FE51F5 /* LaunchScreen.storyboard */,
+				08209C85257169DB00FE51F5 /* AppDelegate.swift */,
+				08209C87257169DB00FE51F5 /* SceneDelegate.swift */,
+				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		78C53F0D6B9803AAAF03D291 /* Pods */ = {
