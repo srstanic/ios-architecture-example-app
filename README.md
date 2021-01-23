@@ -1,4 +1,4 @@
-MobileShop is an example project with a couple of screens representing a simplified shopping experience.
+MobileShop is an example iOS application project with a couple of screens representing a simplified shopping experience.
 
 The app includes:
 * launch screen
