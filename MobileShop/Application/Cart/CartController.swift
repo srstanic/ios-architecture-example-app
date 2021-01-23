@@ -72,8 +72,8 @@ final class CartController: CartViewDelegate {
     // MARK: CartViewDelegate
 
     func onViewDidLoad() {
-        view?.setTitle(dependencies.localizer.localize("CART_SCENE_TITLE"))
-        view?.setPayButtonTitle(dependencies.localizer.localize("CART_SCENE_PAY_BUTTON_TITLE"))
+        view?.setTitle(dependencies.localizer.localize(.title))
+        view?.setPayButtonTitle(dependencies.localizer.localize(.payButtonTitle))
 
         loadAndShowCart()
     }
@@ -111,9 +111,9 @@ final class CartController: CartViewDelegate {
     }
 
     private func showErrorAlert(with completion: @escaping VoidHandler) {
-        let title = dependencies.localizer.localize("CART_SCENE_ERROR_TITLE")
-        let message = dependencies.localizer.localize("CART_SCENE_ERROR_MESSAGE")
-        let buttonTitle = dependencies.localizer.localize("RETRY")
+        let title = dependencies.localizer.localize(.errorTitle)
+        let message = dependencies.localizer.localize(.errorMessage)
+        let buttonTitle = dependencies.localizer.localize(.errorActionTitle)
         view?.showAlert(
             title: title,
             message: message,
@@ -152,10 +152,10 @@ extension CartViewContent {
             .map { productCartItem in
                 let discountString: String? = {
                     let discount = discountsByProductIdMap[productCartItem.product.id]
-                    return discount != nil ? localizer.localize("CART_SCENE_DISCOUNT_VALUE", "\(discount!)") : nil
+                    return discount != nil ? localizer.localize(.discountValue, "\(discount!)") : nil
                 }()
-                let priceString = localizer.localize("PRICE_AMOUNT", "\(productCartItem.product.price)")
-                let quantityString = localizer.localize("CART_SCENE_QUANTITY_VALUE", "\(productCartItem.quantity)")
+                let priceString = localizer.localize(.priceAmount, "\(productCartItem.product.price)")
+                let quantityString = localizer.localize(.quantityValue, "\(productCartItem.quantity)")
                 return .init(
                     title: productCartItem.product.title,
                     price: priceString,
@@ -168,13 +168,13 @@ extension CartViewContent {
             .filter { $0.productId == nil }
             .map {
                 let discountValue = $0.amountAsPercentage
-                let discountString = localizer.localize("CART_SCENE_DISCOUNT_VALUE", "\(discountValue)")
+                let discountString = localizer.localize(.discountValue, "\(discountValue)")
                 return .init(title: $0.title, discount: discountString)
             }
 
         let totalCotentItem = CartTotalViewContent(
-            title: localizer.localize("CART_SCENE_TOTAL_LABEL"),
-            amount: localizer.localize("PRICE_AMOUNT", String(format: "%.2f", total))
+            title: localizer.localize(.totalLabel),
+            amount: localizer.localize(.priceAmount, String(format: "%.2f", total))
         )
 
         let cartViewContent = CartViewContent(
@@ -184,4 +184,16 @@ extension CartViewContent {
         )
         return cartViewContent
     }
+}
+
+private extension String {
+    static let title = "CART_SCENE_TITLE"
+    static let payButtonTitle = "CART_SCENE_PAY_BUTTON_TITLE"
+    static let quantityValue = "CART_SCENE_QUANTITY_VALUE"
+    static let discountValue = "CART_SCENE_DISCOUNT_VALUE"
+    static let totalLabel = "CART_SCENE_TOTAL_LABEL"
+    static let errorTitle = "CART_SCENE_ERROR_TITLE"
+    static let errorMessage = "CART_SCENE_ERROR_MESSAGE"
+    static let errorActionTitle = "CART_SCENE_ERROR_ACTION_TITLE"
+    static let priceAmount = "PRICE_AMOUNT"
 }

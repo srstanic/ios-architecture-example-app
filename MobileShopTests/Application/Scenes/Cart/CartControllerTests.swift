@@ -94,7 +94,7 @@ class CartControllerTests: XCTestCase {
         let expectedAlertContent = RecordedAlertContent(
             title: "CART_SCENE_ERROR_TITLE",
             message: "CART_SCENE_ERROR_MESSAGE",
-            actionTitles: ["RETRY"]
+            actionTitles: ["CART_SCENE_ERROR_ACTION_TITLE"]
         )
         XCTAssertEqual(cartViewSpy.recordedAlertContents, [expectedAlertContent])
 

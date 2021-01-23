@@ -64,9 +64,9 @@ final class PaymentController: PaymentViewDelegate {
     }
 
     private func showSuccessfulPurchaseAlert(onDismiss: @escaping VoidHandler) {
-        let title = dependencies.localizer.localize("PAYMENT_SUCCESS_ALERT_TITLE")
-        let message = dependencies.localizer.localize("PAYMENT_SUCCESS_ALERT_MESSAGE")
-        let buttonTitle = dependencies.localizer.localize("PAYMENT_SUCCESS_ALERT_BUTTON_TITLE")
+        let title = dependencies.localizer.localize(.successAlertTitle)
+        let message = dependencies.localizer.localize(.successAlertMessage)
+        let buttonTitle = dependencies.localizer.localize(.successAlertButtonTitle)
         view?.showAlert(
             title: title,
             message: message,
@@ -76,12 +76,10 @@ final class PaymentController: PaymentViewDelegate {
     }
 
     func onViewDidLoad() {
-        view?.setAmountTitle(dependencies.localizer.localize("PAYMENT_SCENE_AMOUNT_TITLE"))
-        view?.setChargeNote(dependencies.localizer.localize("PAYMENT_SCENE_CHARGE_NOTE"))
-        view?.setConfirmPurchaseButtonTitle(
-            dependencies.localizer.localize("PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE")
-        )
-        view?.showAmount(dependencies.localizer.localize("PRICE_AMOUNT", String(format: "%.2f", amount)))
+        view?.setAmountTitle(dependencies.localizer.localize(.amountTitle))
+        view?.setChargeNote(dependencies.localizer.localize(.chargeNote))
+        view?.setConfirmPurchaseButtonTitle(dependencies.localizer.localize(.confirmPurchaseButtonTitle))
+        view?.showAmount(dependencies.localizer.localize(.priceAmount, String(format: "%.2f", amount)))
     }
 
     func onViewWillAppear() {}
@@ -91,4 +89,14 @@ final class PaymentController: PaymentViewDelegate {
     }
 
     func onViewDidDisappear() {}
+}
+
+private extension String {
+    static let amountTitle = "PAYMENT_SCENE_AMOUNT_TITLE"
+    static let chargeNote = "PAYMENT_SCENE_CHARGE_NOTE"
+    static let confirmPurchaseButtonTitle = "PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE"
+    static let successAlertTitle = "PAYMENT_SUCCESS_ALERT_TITLE"
+    static let successAlertMessage = "PAYMENT_SUCCESS_ALERT_MESSAGE"
+    static let successAlertButtonTitle = "PAYMENT_SUCCESS_ALERT_BUTTON_TITLE"
+    static let priceAmount = "PRICE_AMOUNT"
 }

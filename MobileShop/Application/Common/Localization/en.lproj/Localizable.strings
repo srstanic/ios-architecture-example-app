@@ -8,7 +8,6 @@
 
 // MARK: Common
 "PRICE_AMOUNT" = "$%@";
-"RETRY" = "Retry";
 
 // MARK: Cart Scene
 "CART_SCENE_TITLE" = "Cart";
@@ -18,6 +17,7 @@
 "CART_SCENE_TOTAL_LABEL" = "Total:";
 "CART_SCENE_ERROR_TITLE" = "Error";
 "CART_SCENE_ERROR_MESSAGE" = "Failed to load cart";
+"CART_SCENE_ERROR_ACTION_TITLE" = "Retry";
 
 // MARK: Payment Scene
 "PAYMENT_SCENE_AMOUNT_TITLE" = "Amount:";
