@@ -11,7 +11,7 @@ The app includes:
 
 The app connects to a remote mock server to pull static cart data. For simplicity's sake, a seemingly successful payment doesn't actually change the state of the cart.
 
-The mock server is created with (My JSON Server)(https://my-json-server.typicode.com/) and the data it returns is defined in a (separate repository)[https://github.com/srstanic/ios-architecture-mock-api].
+The mock server is created with [My JSON Server](https://my-json-server.typicode.com/) and the data it returns is defined in a [separate repository](https://github.com/srstanic/ios-architecture-mock-api).
 
 This app includes examples of networking, localization, analytics tracking, content loading, error handling, transitions between screens, and alert presentation.
 
