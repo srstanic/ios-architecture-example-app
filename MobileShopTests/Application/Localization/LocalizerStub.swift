@@ -8,7 +8,7 @@
 import Foundation
 @testable import MobileShop
 
-final class LocalizerStub: Localising {
+final class LocalizerStub: Localizing {
     func localize(_ key: String) -> String {
         return key
     }

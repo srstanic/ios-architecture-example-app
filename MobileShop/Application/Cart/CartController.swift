@@ -56,7 +56,7 @@ protocol CartTracking: SceneTracking {
 final class CartController: CartViewDelegate {
     struct Dependencies {
         let cartService: CartServicing
-        let localizer: Localising
+        let localizer: Localizing
         let tracker: CartTracking
     }
 
@@ -140,7 +140,7 @@ extension CartViewContent {
     fileprivate static func map(
         from cart: Cart,
         with total: Double,
-        localizer: Localising
+        localizer: Localizing
     ) -> Self {
         var discountsByProductIdMap: [String: Int] = [:]
         let productDiscounts = cart.discounts.filter { $0.productId != nil }

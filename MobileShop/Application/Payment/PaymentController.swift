@@ -36,7 +36,7 @@ protocol PaymentTracking: SceneTracking {
 final class PaymentController: PaymentViewDelegate {
     struct Dependencies {
         let tracker: PaymentTracking
-        let localizer: Localising
+        let localizer: Localizing
     }
 
     init(for amount: Double, dependencies: Dependencies, delegate: PaymentControllerDelegate) {
