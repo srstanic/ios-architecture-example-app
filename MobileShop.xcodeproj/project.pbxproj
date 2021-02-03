@@ -11,7 +11,6 @@
 		08209C86257169DB00FE51F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C85257169DB00FE51F5 /* AppDelegate.swift */; };
 		08209C88257169DB00FE51F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C87257169DB00FE51F5 /* SceneDelegate.swift */; };
 		08209C8A257169DB00FE51F5 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C89257169DB00FE51F5 /* CartViewController.swift */; };
-		08209C8D257169DB00FE51F5 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08209C8B257169DB00FE51F5 /* Cart.storyboard */; };
 		08209C8F257169DE00FE51F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08209C8E257169DE00FE51F5 /* Assets.xcassets */; };
 		08209C92257169DE00FE51F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08209C90257169DE00FE51F5 /* LaunchScreen.storyboard */; };
 		08209CCA25716CFA00FE51F5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209CC925716CFA00FE51F5 /* AppCoordinator.swift */; };
@@ -68,6 +67,7 @@
 		087AC880257663FF006FF4E6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC87F257663FF006FF4E6 /* Product.swift */; };
 		087AC890257666AB006FF4E6 /* CartRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC88F257666AB006FF4E6 /* CartRemoteStore.swift */; };
 		087AC8A12576677B006FF4E6 /* ProductsRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */; };
+		088D502C25CB60A50073E046 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 088D502B25CB60A50073E046 /* Cart.storyboard */; };
 		08CE88F725790D1600BEE7EF /* fake-api.json in Resources */ = {isa = PBXBuildFile; fileRef = 08CE88F625790D1600BEE7EF /* fake-api.json */; };
 		08FF955225812BC00095A408 /* FirebaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF955125812BC00095A408 /* FirebaseTracker.swift */; };
 		08FF955625812BDE0095A408 /* FacebookTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF955525812BDE0095A408 /* FacebookTracker.swift */; };
@@ -91,7 +91,6 @@
 		08209C85257169DB00FE51F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08209C87257169DB00FE51F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		08209C89257169DB00FE51F5 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		08209C8C257169DB00FE51F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Cart.storyboard; sourceTree = "<group>"; };
 		08209C8E257169DE00FE51F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08209C91257169DE00FE51F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08209C93257169DE00FE51F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,6 +150,7 @@
 		087AC87F257663FF006FF4E6 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		087AC88F257666AB006FF4E6 /* CartRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteStore.swift; sourceTree = "<group>"; };
 		087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemoteStore.swift; sourceTree = "<group>"; };
+		088D502B25CB60A50073E046 /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		08CE88F625790D1600BEE7EF /* fake-api.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "fake-api.json"; sourceTree = "<group>"; };
 		08FF955125812BC00095A408 /* FirebaseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTracker.swift; sourceTree = "<group>"; };
 		08FF955525812BDE0095A408 /* FacebookTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookTracker.swift; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 			children = (
 				087AC897257666D0006FF4E6 /* Services */,
 				087AC8342575635B006FF4E6 /* Views */,
-				08209C8B257169DB00FE51F5 /* Cart.storyboard */,
+				088D502B25CB60A50073E046 /* Cart.storyboard */,
 				08209C89257169DB00FE51F5 /* CartViewController.swift */,
 				0877A06B2571B2BD00A69E02 /* CartController.swift */,
 				0878FF4025799652007E037E /* CartTracker.swift */,
@@ -585,7 +585,7 @@
 				084AAA64257E9A3400DE7EE1 /* Localizable.strings in Resources */,
 				0878FF0E25792DDB007E037E /* Payment.storyboard in Resources */,
 				08CE88F725790D1600BEE7EF /* fake-api.json in Resources */,
-				08209C8D257169DB00FE51F5 /* Cart.storyboard in Resources */,
+				088D502C25CB60A50073E046 /* Cart.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,14 +724,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		08209C8B257169DB00FE51F5 /* Cart.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				08209C8C257169DB00FE51F5 /* Base */,
-			);
-			name = Cart.storyboard;
-			sourceTree = "<group>";
-		};
 		08209C90257169DE00FE51F5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
