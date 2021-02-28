@@ -11,9 +11,9 @@ import XCTest
 class CartTests: XCTestCase {
 
     func testEmptyCartTotal() throws {
-        let sut = Cart(id: "1", products: [], discounts: [])
+        let cart = Cart(id: "1", products: [], discounts: [])
 
-        XCTAssertEqual(sut.calculateTotalPriceAmount(), 0)
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), 0)
     }
 
     func testSingleProductTotal() throws {
@@ -21,9 +21,9 @@ class CartTests: XCTestCase {
         let product = Product(id: "1", title: "p", price: productPrice)
         let productCartItem = ProductCartItem(product: product, quantity: 1)
 
-        let sut = Cart(id: "1", products: [productCartItem], discounts: [])
+        let cart = Cart(id: "1", products: [productCartItem], discounts: [])
 
-        XCTAssertEqual(sut.calculateTotalPriceAmount(), productPrice)
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), productPrice)
     }
 
     func testSingleProductTwiceTotal() throws {
@@ -34,9 +34,9 @@ class CartTests: XCTestCase {
         let product = Product(id: "1", title: "p", price: productPrice)
         let productCartItem = ProductCartItem(product: product, quantity: quantity)
 
-        let sut = Cart(id: "1", products: [productCartItem], discounts: [])
+        let cart = Cart(id: "1", products: [productCartItem], discounts: [])
 
-        XCTAssertEqual(sut.calculateTotalPriceAmount(), expectedPrice)
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), expectedPrice)
     }
 
     func testTwoProductsTotal() throws {
@@ -50,9 +50,9 @@ class CartTests: XCTestCase {
         let product2 = Product(id: "2", title: "p", price: productPrice2)
         let productCartItem2 = ProductCartItem(product: product2, quantity: 1)
 
-        let sut = Cart(id: "1", products: [productCartItem1, productCartItem2], discounts: [])
+        let cart = Cart(id: "1", products: [productCartItem1, productCartItem2], discounts: [])
 
-        XCTAssertEqual(sut.calculateTotalPriceAmount(), expectedPrice)
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), expectedPrice)
     }
 
     func testDiscountedProductTotal() throws {
@@ -70,9 +70,9 @@ class CartTests: XCTestCase {
             productId: product.id
         )
 
-        let sut = Cart(id: "1", products: [productCartItem], discounts: [productDiscount])
+        let cart = Cart(id: "1", products: [productCartItem], discounts: [productDiscount])
 
-        XCTAssertEqual(sut.calculateTotalPriceAmount(), expectedPrice)
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), expectedPrice)
     }
 
     func testDiscountedProductAndDiscountedCartTotal() throws {
@@ -98,8 +98,36 @@ class CartTests: XCTestCase {
             productId: nil
         )
 
-        let sut = Cart(id: "1", products: [productCartItem], discounts: [productDiscount, cartDiscount])
+        let cart = Cart(id: "1", products: [productCartItem], discounts: [productDiscount, cartDiscount])
 
-        XCTAssertEqual(sut.calculateTotalPriceAmount(), expectedPrice)
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), expectedPrice)
+    }
+
+    func testDiscountedCartTotalTwice() throws {
+        let productPrice: Double = 10
+        let cartDiscountPercentage1: Int = 10
+        let cartDiscountPercentage2: Int = 15
+        let expectedPrice: Double = 7.65
+
+        let product = Product(id: "1", title: "p", price: productPrice)
+        let productCartItem = ProductCartItem(product: product, quantity: 1)
+
+        let cartDiscount1 = Discount(
+            id: "1",
+            title: "d1",
+            amountAsPercentage: cartDiscountPercentage1,
+            productId: nil
+        )
+
+        let cartDiscount2 = Discount(
+            id: "2",
+            title: "d2",
+            amountAsPercentage: cartDiscountPercentage2,
+            productId: nil
+        )
+
+        let cart = Cart(id: "1", products: [productCartItem], discounts: [cartDiscount1, cartDiscount2])
+
+        XCTAssertEqual(CartRules.calculateTotalPriceAmount(for: cart), expectedPrice)
     }
 }

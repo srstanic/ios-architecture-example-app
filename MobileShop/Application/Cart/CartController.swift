@@ -99,7 +99,7 @@ final class CartController: CartViewDelegate {
     private var cartTotal: Double = 0
 
     private func showCartContent(for cart: Cart) {
-        let cartTotal = cart.calculateTotalPriceAmount()
+        let cartTotal = CartRules.calculateTotalPriceAmount(for: cart)
         self.cartTotal = cartTotal // so it can be passed to the payment scene
 
         let cartViewContent = CartViewContent.map(

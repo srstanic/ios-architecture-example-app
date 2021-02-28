@@ -38,7 +38,7 @@ class CartControllerTests: XCTestCase {
     )
 
     private lazy var cartTotal: Double = {
-        return cart.calculateTotalPriceAmount()
+        return CartRules.calculateTotalPriceAmount(for: cart)
     }()
 
     func testCartShownOnLoad() {
