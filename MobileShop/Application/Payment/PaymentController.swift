@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: PaymentView & PaymentViewDelegate
 
-protocol PaymentView: class, AlertingView {
+protocol PaymentView: AnyObject, AlertingView {
     func setAmountTitle(_ amountTitle: String)
     func setChargeNote(_ chargeNote: String)
     func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String)

@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: CartView & CartViewDelegate
 
-protocol CartView: class, View, LoadableView, AlertingView {
+protocol CartView: AnyObject, View, LoadableView, AlertingView {
     func setPayButtonTitle(_ title: String)
     func showCartContent(_ cartContent: CartViewContent)
 }
@@ -37,7 +37,7 @@ struct CartTotalViewContent {
     let amount: String
 }
 
-protocol CartViewDelegate: class, ViewDelegate {
+protocol CartViewDelegate: AnyObject, ViewDelegate {
     func onPaymentInitiated()
 }
 

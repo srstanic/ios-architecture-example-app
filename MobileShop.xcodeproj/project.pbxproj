@@ -265,10 +265,9 @@
 		08209CC225716C6B00FE51F5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				0878FF2F257979D1007E037E /* Scenes */,
-				086BB76B257E60BC00249899 /* Tracking */,
-				086BB77D257E6A8C00249899 /* View */,
-				084AAA73257F922E00DE7EE1 /* Localization */,
+				08CE88E9257806D600BEE7EF /* Cart */,
+				086BB776257E683E00249899 /* Payment */,
+				088C64BE265AA8410039D8BF /* Common */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -386,15 +385,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0878FF2F257979D1007E037E /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				08CE88E9257806D600BEE7EF /* Cart */,
-				086BB776257E683E00249899 /* Payment */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
 		0878FF44257996C9007E037E /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +419,16 @@
 				08CE88F625790D1600BEE7EF /* fake-api.json */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		088C64BE265AA8410039D8BF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				086BB76B257E60BC00249899 /* Tracking */,
+				086BB77D257E6A8C00249899 /* View */,
+				084AAA73257F922E00DE7EE1 /* Localization */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		08CE88E9257806D600BEE7EF /* Cart */ = {
