@@ -1,3 +1,5 @@
+![All Tests](https://github.com/srstanic/ios-architecture-example-app/actions/workflows/run-all-tests.yml/badge.svg)
+
 MobileShop is an example iOS application project with a couple of screens representing a simplified shopping experience.
 
 The app includes:
