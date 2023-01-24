@@ -31,6 +31,7 @@
 		084AAA83257FA1F800DE7EE1 /* LocalizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AAA82257FA1F800DE7EE1 /* LocalizerTests.swift */; };
 		084AAA87257FEC2F00DE7EE1 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AAA86257FEC2F00DE7EE1 /* LoadableView.swift */; };
 		084AAA91257FF55100DE7EE1 /* LoadableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AAA90257FF55100DE7EE1 /* LoadableTableViewController.swift */; };
+		086B96242980064E001BA017 /* Coordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086B96232980064E001BA017 /* Coordinating.swift */; };
 		086BB751257E4C2200249899 /* AlertingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086BB750257E4C2200249899 /* AlertingView.swift */; };
 		086BB757257E4F5400249899 /* AlertingView+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086BB756257E4F5300249899 /* AlertingView+UIViewController.swift */; };
 		086BB764257E5DC600249899 /* UnitTestingEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086BB763257E5DC600249899 /* UnitTestingEnvironment.swift */; };
@@ -115,6 +116,7 @@
 		084AAA82257FA1F800DE7EE1 /* LocalizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizerTests.swift; sourceTree = "<group>"; };
 		084AAA86257FEC2F00DE7EE1 /* LoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
 		084AAA90257FF55100DE7EE1 /* LoadableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableTableViewController.swift; sourceTree = "<group>"; };
+		086B96232980064E001BA017 /* Coordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinating.swift; sourceTree = "<group>"; };
 		086BB750257E4C2200249899 /* AlertingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingView.swift; sourceTree = "<group>"; };
 		086BB756257E4F5300249899 /* AlertingView+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertingView+UIViewController.swift"; sourceTree = "<group>"; };
 		086BB763257E5DC600249899 /* UnitTestingEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingEnvironment.swift; sourceTree = "<group>"; };
@@ -352,6 +354,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		086B962229800630001BA017 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				086B96232980064E001BA017 /* Coordinating.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		086BB762257E5D6E00249899 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +475,7 @@
 				08CE88FC25791F2400BEE7EF /* Networking */,
 				0878FF44257996C9007E037E /* Tracking */,
 				0839E6A5257A7B89006FB959 /* View */,
+				086B962229800630001BA017 /* Coordinator */,
 				084AAA51257E972500DE7EE1 /* Localization */,
 				086BB762257E5D6E00249899 /* Environment */,
 				08209C8E257169DE00FE51F5 /* Assets.xcassets */,
@@ -667,6 +678,7 @@
 				08209CD525716D5700FE51F5 /* CartBuilder.swift in Sources */,
 				087AC8A12576677B006FF4E6 /* ProductsRemoteStore.swift in Sources */,
 				087AC8442575646C006FF4E6 /* NibView.swift in Sources */,
+				086B96242980064E001BA017 /* Coordinating.swift in Sources */,
 				089CC10B25EBC1FA002963B9 /* CartRules.swift in Sources */,
 				08209CEA25716F1E00FE51F5 /* UIViewController+Extensions.swift in Sources */,
 				087AC87125766310006FF4E6 /* Cart.swift in Sources */,

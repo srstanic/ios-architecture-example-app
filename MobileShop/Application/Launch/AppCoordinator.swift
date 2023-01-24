@@ -11,19 +11,19 @@ final class AppCoordinator {
     func start(on window: UIWindow) {
         let navigationController = UINavigationController()
         let cartCoordinator = Self.createCartCoordinator()
-        cartCoordinator.transitionToCartScene(in: navigationController, animated: false)
+        cartCoordinator.transition(to: CartDestination(navigationController: navigationController, animated: false))
 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 
-    private static func createCartCoordinator() -> CartCoordinating {
+    private static func createCartCoordinator() -> any Coordinating<CartDestination> {
         let paymentCoordinator = createPaymentCoordinator()
         let cartCoordinator = CartCoordinator(dependencies: .init(paymentCoordinator: paymentCoordinator))
         return cartCoordinator
     }
 
-    private static func createPaymentCoordinator() -> PaymentCoordinating {
+    private static func createPaymentCoordinator() -> any Coordinating<PaymentDestination>{
         return PaymentCoordinator()
     }
 }

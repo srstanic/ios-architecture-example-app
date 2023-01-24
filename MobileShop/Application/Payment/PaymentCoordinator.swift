@@ -7,23 +7,24 @@
 
 import UIKit
 
-protocol PaymentCoordinating {
-    func transitionToPaymentScene(
-        with amount: Double,
-        over viewController: UIViewController,
-        animated: Bool
-    )
+final class PaymentDestination {
+    let amount: Double
+    let presentingViewController: UIViewController
+    let animated: Bool
+
+    init(amount: Double, presentingViewController: UIViewController, animated: Bool) {
+        self.amount = amount
+        self.presentingViewController = presentingViewController
+        self.animated = animated
+    }
 }
 
-final class PaymentCoordinator: PaymentCoordinating {
-    func transitionToPaymentScene(
-        with amount: Double,
-        over viewController: UIViewController,
-        animated: Bool
-    ) {
-        let paymentScene = builder.buildPaymentScene(for: amount, with: self)
-        viewController.present(paymentScene, animated: true)
-        self.presentingViewController = viewController
+final class PaymentCoordinator: Coordinating {
+    func transition(to destination: PaymentDestination) {
+        let paymentScene = builder.buildPaymentScene(for: destination.amount, with: self)
+        let presentingViewController = destination.presentingViewController
+        presentingViewController.present(paymentScene, animated: true)
+        self.presentingViewController = presentingViewController
     }
 
     private let builder = PaymentBuilder()

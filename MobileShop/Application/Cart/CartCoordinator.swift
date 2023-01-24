@@ -7,13 +7,19 @@
 
 import UIKit
 
-protocol CartCoordinating {
-    func transitionToCartScene(in navigationController: UINavigationController, animated: Bool)
+final class CartDestination {
+    let navigationController: UINavigationController
+    let animated: Bool
+
+    init(navigationController: UINavigationController, animated: Bool) {
+        self.navigationController = navigationController
+        self.animated = animated
+    }
 }
 
-final class CartCoordinator: CartCoordinating {
+final class CartCoordinator: Coordinating {
     struct Dependencies {
-        let paymentCoordinator: PaymentCoordinating
+        let paymentCoordinator: any Coordinating<PaymentDestination>
     }
 
     init(dependencies: Dependencies) {
@@ -21,9 +27,10 @@ final class CartCoordinator: CartCoordinating {
     }
     private let dependencies: Dependencies
 
-    func transitionToCartScene(in navigationController: UINavigationController, animated: Bool) {
+    func transition(to destination: CartDestination) {
         let cartScene = cartBuilder.buildCartScene(with: self)
-        navigationController.pushViewController(cartScene, animated: animated)
+        let navigationController = destination.navigationController
+        navigationController.pushViewController(cartScene, animated: destination.animated)
         self.navigationController = navigationController
     }
 
@@ -36,10 +43,11 @@ extension CartCoordinator: CartControllerDelegate {
         guard let navigationController = self.navigationController else {
             return
         }
-        dependencies.paymentCoordinator.transitionToPaymentScene(
-            with: amount,
-            over: navigationController,
+        let paymentDestination = PaymentDestination(
+            amount: amount,
+            presentingViewController: navigationController,
             animated: true
         )
+        dependencies.paymentCoordinator.transition(to: paymentDestination)
     }
 }
