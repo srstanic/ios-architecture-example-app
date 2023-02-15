@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -68,12 +68,13 @@
 		087AC890257666AB006FF4E6 /* CartRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC88F257666AB006FF4E6 /* CartRemoteStore.swift */; };
 		087AC8A12576677B006FF4E6 /* ProductsRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */; };
 		088D502C25CB60A50073E046 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 088D502B25CB60A50073E046 /* Cart.storyboard */; };
+		089C72E3299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 089C72E2299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		089C72E6299CDE6C00986B97 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 089C72E5299CDE6C00986B97 /* FacebookCore */; };
 		089CC10B25EBC1FA002963B9 /* CartRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089CC10A25EBC1FA002963B9 /* CartRules.swift */; };
 		08CE88F725790D1600BEE7EF /* fake-api.json in Resources */ = {isa = PBXBuildFile; fileRef = 08CE88F625790D1600BEE7EF /* fake-api.json */; };
 		08FF955225812BC00095A408 /* FirebaseTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF955125812BC00095A408 /* FirebaseTracker.swift */; };
 		08FF955625812BDE0095A408 /* FacebookTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF955525812BDE0095A408 /* FacebookTracker.swift */; };
 		08FF95732581428D0095A408 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF95722581428D0095A408 /* UITableViewCell+Extensions.swift */; };
-		B8F75FEBD6C0E561CBD4A453 /* Pods_MobileShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74743E1492EC8356668498A9 /* Pods_MobileShop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,9 +158,6 @@
 		08FF955125812BC00095A408 /* FirebaseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTracker.swift; sourceTree = "<group>"; };
 		08FF955525812BDE0095A408 /* FacebookTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookTracker.swift; sourceTree = "<group>"; };
 		08FF95722581428D0095A408 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		74743E1492EC8356668498A9 /* Pods_MobileShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD9ECFBBC7252840E681EF88 /* Pods-MobileShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileShop.release.xcconfig"; path = "Target Support Files/Pods-MobileShop/Pods-MobileShop.release.xcconfig"; sourceTree = "<group>"; };
-		FB66F830D6193B54EEEB0734 /* Pods-MobileShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileShop.debug.xcconfig"; path = "Target Support Files/Pods-MobileShop/Pods-MobileShop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +165,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8F75FEBD6C0E561CBD4A453 /* Pods_MobileShop.framework in Frameworks */,
+				089C72E3299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				089C72E6299CDE6C00986B97 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,8 +186,6 @@
 				08209C84257169DB00FE51F5 /* MobileShop */,
 				08209C9B257169DF00FE51F5 /* MobileShopTests */,
 				08209C83257169DB00FE51F5 /* Products */,
-				78C53F0D6B9803AAAF03D291 /* Pods */,
-				C555D943E6148EDB84466D85 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -483,23 +480,6 @@
 			path = Launch;
 			sourceTree = "<group>";
 		};
-		78C53F0D6B9803AAAF03D291 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FB66F830D6193B54EEEB0734 /* Pods-MobileShop.debug.xcconfig */,
-				BD9ECFBBC7252840E681EF88 /* Pods-MobileShop.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		C555D943E6148EDB84466D85 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				74743E1492EC8356668498A9 /* Pods_MobileShop.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -507,17 +487,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08209CAC257169DF00FE51F5 /* Build configuration list for PBXNativeTarget "MobileShop" */;
 			buildPhases = (
-				CA82953A7863314F62E5D132 /* [CP] Check Pods Manifest.lock */,
 				08209C7E257169DB00FE51F5 /* Sources */,
 				08209C7F257169DB00FE51F5 /* Frameworks */,
 				08209C80257169DB00FE51F5 /* Resources */,
-				08B9040128B81EEDF82D1257 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MobileShop;
+			packageProductDependencies = (
+				089C72E2299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				089C72E5299CDE6C00986B97 /* FacebookCore */,
+			);
 			productName = MobileShop;
 			productReference = 08209C82257169DB00FE51F5 /* MobileShop.app */;
 			productType = "com.apple.product-type.application";
@@ -567,6 +549,10 @@
 				Base,
 			);
 			mainGroup = 08209C79257169DB00FE51F5;
+			packageReferences = (
+				089C72E1299CDDD000986B97 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				089C72E4299CDE6C00986B97 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 08209C83257169DB00FE51F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -600,48 +586,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		08B9040128B81EEDF82D1257 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MobileShop/Pods-MobileShop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MobileShop/Pods-MobileShop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MobileShop/Pods-MobileShop-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA82953A7863314F62E5D132 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MobileShop-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		08209C7E257169DB00FE51F5 /* Sources */ = {
@@ -865,7 +809,6 @@
 		};
 		08209CAD257169DF00FE51F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB66F830D6193B54EEEB0734 /* Pods-MobileShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -885,7 +828,6 @@
 		};
 		08209CAE257169DF00FE51F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD9ECFBBC7252840E681EF88 /* Pods-MobileShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -978,6 +920,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		089C72E1299CDDD000986B97 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		089C72E4299CDE6C00986B97 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		089C72E2299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 089C72E1299CDDD000986B97 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		089C72E5299CDE6C00986B97 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 089C72E4299CDE6C00986B97 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 08209C7A257169DB00FE51F5 /* Project object */;
 }
