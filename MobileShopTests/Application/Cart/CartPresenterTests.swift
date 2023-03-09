@@ -1,5 +1,5 @@
 //
-//  CartControllerTests.swift
+//  CartPresenterTests.swift
 //  MobileShopTests
 //
 //  Created by Srđan Stanić on 09/12/2020.
@@ -8,12 +8,12 @@
 import XCTest
 @testable import MobileShop
 
-class CartControllerTests: XCTestCase {
+class CartPresenterTests: XCTestCase {
     private var cartServiceStub: CartServiceStub!
     private var cartTracker: CartTracking!
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!
     private var localizerStub: LocalizerStub!
-    private var cartControllerDelegateSpy: CartControllerDelegateSpy!
+    private var cartSceneOutputsSpy: CartSceneOutputsSpy!
     private var cartViewSpy: CartViewSpy!
 
     override func setUpWithError() throws {
@@ -21,7 +21,7 @@ class CartControllerTests: XCTestCase {
         firebaseAnalyticsServiceStub = FirebaseAnalyticsServiceStub()
         localizerStub = LocalizerStub()
         cartTracker = CartTracker(firebaseAnalyticsService: firebaseAnalyticsServiceStub)
-        cartControllerDelegateSpy = CartControllerDelegateSpy()
+        cartSceneOutputsSpy = CartSceneOutputsSpy()
         cartViewSpy = CartViewSpy()
     }
 
@@ -115,7 +115,7 @@ class CartControllerTests: XCTestCase {
         sut.onViewDidLoad()
         sut.onPaymentInitiated()
 
-        XCTAssertEqual(cartControllerDelegateSpy.recordedDidChooseToPayAmounts, [cartTotal])
+        XCTAssertEqual(cartSceneOutputsSpy.recordedOnDidChooseToPayAmounts, [cartTotal])
     }
 
     func testTrackingVisit() {
@@ -134,14 +134,14 @@ class CartControllerTests: XCTestCase {
         XCTAssertEqual(firebaseAnalyticsServiceStub.recordedEvents, [.userActionEvent("Pay")])
     }
 
-    private func buildSUT() -> CartController {
-        return CartController(
+    private func buildSUT() -> CartPresenter {
+        return CartPresenter(
             dependencies: .init(
                 cartService: cartServiceStub,
                 localizer: localizerStub,
                 tracker: cartTracker
             ),
-            delegate: cartControllerDelegateSpy
+            outputs: cartSceneOutputsSpy
         )
     }
 }
@@ -155,11 +155,11 @@ final class CartServiceStub: CartServicing {
     var result: Result<Cart, Error>? = nil
 }
 
-final class CartControllerDelegateSpy: CartControllerDelegate {
-    func didChooseToPay(for amount: Double) {
-        recordedDidChooseToPayAmounts.append(amount)
+final class CartSceneOutputsSpy: CartSceneOutputs {
+    func onDidChooseToPay(for amount: Double) {
+        recordedOnDidChooseToPayAmounts.append(amount)
     }
-    var recordedDidChooseToPayAmounts: [Double] = []
+    var recordedOnDidChooseToPayAmounts: [Double] = []
 }
 
 final class CartViewSpy: AlertingViewStub, CartView {

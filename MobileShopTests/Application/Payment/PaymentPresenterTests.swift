@@ -1,5 +1,5 @@
 //
-//  PaymentControllerTests.swift
+//  PaymentPresenterTests.swift
 //  MobileShopTests
 //
 //  Created by Srđan Stanić on 09/12/2020.
@@ -8,12 +8,12 @@
 import XCTest
 @testable import MobileShop
 
-class PaymentControllerTests: XCTestCase {
+class PaymentPresenterTests: XCTestCase {
     private var paymentTracker: PaymentTracking!
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!
     private var facebookAnalyticsServiceStub: FacebookAnalyticsServiceStub!
     private var localizerStub: LocalizerStub!
-    private var paymentControllerDelegateSpy: PaymentControllerDelegateSpy!
+    private var paymentSceneOutputsSpy: PaymentSceneOutputsSpy!
     private var paymentViewSpy: PaymentViewSpy!
 
     override func setUpWithError() throws {
@@ -24,7 +24,7 @@ class PaymentControllerTests: XCTestCase {
             facebookAnalyticsService: facebookAnalyticsServiceStub
         )
         localizerStub = LocalizerStub()
-        paymentControllerDelegateSpy = PaymentControllerDelegateSpy()
+        paymentSceneOutputsSpy = PaymentSceneOutputsSpy()
         paymentViewSpy = PaymentViewSpy()
     }
 
@@ -57,7 +57,7 @@ class PaymentControllerTests: XCTestCase {
         XCTAssertEqual(paymentViewSpy.recordedOnDismissHandlers.count, 1)
         paymentViewSpy.recordedOnDismissHandlers.first!?()
 
-        XCTAssertEqual(paymentControllerDelegateSpy.onPurchaseCompletedCallCount, 1)
+        XCTAssertEqual(paymentSceneOutputsSpy.onPurchaseCompletedCallCount, 1)
     }
 
     func testTrackingVisit() {
@@ -82,19 +82,19 @@ class PaymentControllerTests: XCTestCase {
         XCTAssertEqual(facebookAnalyticsServiceStub.recordedEvents, [.purchaseEvent(amount)])
     }
 
-    private func buildSUT(forAmount amount: Double) -> PaymentController {
-        return PaymentController(
+    private func buildSUT(forAmount amount: Double) -> PaymentPresenter {
+        return PaymentPresenter(
             for: amount,
             dependencies: .init(
                 tracker: paymentTracker,
                 localizer: localizerStub
             ),
-            delegate: paymentControllerDelegateSpy
+            outputs: paymentSceneOutputsSpy
         )
     }
 }
 
-final class PaymentControllerDelegateSpy: PaymentControllerDelegate {
+final class PaymentSceneOutputsSpy: PaymentSceneOutputs {
     func onPurchaseCompleted() {
         onPurchaseCompletedCallCount += 1
     }

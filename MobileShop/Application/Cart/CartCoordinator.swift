@@ -28,18 +28,18 @@ final class CartCoordinator: Coordinating {
     private let dependencies: Dependencies
 
     func transition(to destination: CartDestination) {
-        let cartScene = cartBuilder.buildCartScene(with: self)
+        let cartScene = composer.composeCartScene(with: self)
         let navigationController = destination.navigationController
         navigationController.pushViewController(cartScene, animated: destination.animated)
         self.navigationController = navigationController
     }
 
-    private let cartBuilder = CartBuilder()
+    private let composer = CartComposer()
     private weak var navigationController: UINavigationController?
 }
 
-extension CartCoordinator: CartControllerDelegate {
-    func didChooseToPay(for amount: Double) {
+extension CartCoordinator: CartSceneOutputs {
+    func onDidChooseToPay(for amount: Double) {
         guard let navigationController = self.navigationController else {
             return
         }

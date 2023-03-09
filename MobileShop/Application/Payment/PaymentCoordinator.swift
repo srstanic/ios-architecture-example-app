@@ -21,17 +21,17 @@ final class PaymentDestination {
 
 final class PaymentCoordinator: Coordinating {
     func transition(to destination: PaymentDestination) {
-        let paymentScene = builder.buildPaymentScene(for: destination.amount, with: self)
+        let paymentScene = composer.composePaymentScene(for: destination.amount, with: self)
         let presentingViewController = destination.presentingViewController
         presentingViewController.present(paymentScene, animated: true)
         self.presentingViewController = presentingViewController
     }
 
-    private let builder = PaymentBuilder()
+    private let composer = PaymentComposer()
     private weak var presentingViewController: UIViewController!
 }
 
-extension PaymentCoordinator: PaymentControllerDelegate {
+extension PaymentCoordinator: PaymentSceneOutputs {
     func onPurchaseCompleted() {
         presentingViewController.dismiss(animated: true)
     }
