@@ -67,6 +67,7 @@
 		087AC880257663FF006FF4E6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC87F257663FF006FF4E6 /* Product.swift */; };
 		087AC890257666AB006FF4E6 /* CartRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC88F257666AB006FF4E6 /* CartRemoteStore.swift */; };
 		087AC8A12576677B006FF4E6 /* ProductsRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */; };
+		0888AC0F29BA37AF00E0E9F4 /* WeakReferenceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888AC0E29BA37AF00E0E9F4 /* WeakReferenceProxy.swift */; };
 		088D502C25CB60A50073E046 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 088D502B25CB60A50073E046 /* Cart.storyboard */; };
 		089C72E3299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 089C72E2299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		089C72E6299CDE6C00986B97 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 089C72E5299CDE6C00986B97 /* FacebookCore */; };
@@ -152,6 +153,7 @@
 		087AC87F257663FF006FF4E6 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		087AC88F257666AB006FF4E6 /* CartRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteStore.swift; sourceTree = "<group>"; };
 		087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemoteStore.swift; sourceTree = "<group>"; };
+		0888AC0E29BA37AF00E0E9F4 /* WeakReferenceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeakReferenceProxy.swift; sourceTree = "<group>"; };
 		088D502B25CB60A50073E046 /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		089CC10A25EBC1FA002963B9 /* CartRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRules.swift; sourceTree = "<group>"; };
 		08CE88F625790D1600BEE7EF /* fake-api.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "fake-api.json"; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 		08FDD95225AF141A00A5D0AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0888AC0E29BA37AF00E0E9F4 /* WeakReferenceProxy.swift */,
 				08CE88FD25791F4000BEE7EF /* MobileShopRemoteAPI */,
 				08CE88FC25791F2400BEE7EF /* Networking */,
 				0878FF44257996C9007E037E /* Tracking */,
@@ -596,6 +599,7 @@
 				0878FEFA257928D4007E037E /* RemoteApiClient+MobileShop.swift in Sources */,
 				083B88D3257ACED20073140C /* UIAlertController+Extensions.swift in Sources */,
 				0878FF4125799652007E037E /* CartTracker.swift in Sources */,
+				0888AC0F29BA37AF00E0E9F4 /* WeakReferenceProxy.swift in Sources */,
 				0839E6A7257A7B9A006FB959 /* ViewOutputs.swift in Sources */,
 				0878FF0025792B0C007E037E /* DiscountsRemoteStore.swift in Sources */,
 				08FF955625812BDE0095A408 /* FacebookTracker.swift in Sources */,

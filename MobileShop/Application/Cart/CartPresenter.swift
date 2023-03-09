@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: CartView & CartViewOutputs
 
-protocol CartView: AnyObject, TitledView, LoadableView, AlertingView {
+protocol CartView: TitledView, LoadableView, AlertingView {
     func setPayButtonTitle(_ title: String)
     func showCartContent(_ cartContent: CartViewContent)
 }
@@ -67,7 +67,7 @@ final class CartPresenter: CartViewOutputs {
     private let dependencies: Dependencies
     private let outputs: CartSceneOutputs
 
-    weak var view: CartView?
+    var view: CartView?
 
     // MARK: CartViewOutputs
 

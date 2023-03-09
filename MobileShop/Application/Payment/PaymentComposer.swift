@@ -29,8 +29,26 @@ final class PaymentComposer {
         )
 
         paymentViewController.outputs = presenter
-        presenter.view = paymentViewController
+        presenter.view = WeakReferenceProxy(paymentViewController)
 
         return paymentViewController
+    }
+}
+
+extension WeakReferenceProxy: PaymentView where ReferenceType: PaymentView {
+    func setAmountTitle(_ amountTitle: String) {
+        object?.setAmountTitle(amountTitle)
+    }
+
+    func setChargeNote(_ chargeNote: String) {
+        object?.setChargeNote(chargeNote)
+    }
+
+    func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String) {
+        object?.setConfirmPurchaseButtonTitle(confirmPurchaseButtonTitle)
+    }
+
+    func showAmount(_ amount: String) {
+        object?.showAmount(amount)
     }
 }

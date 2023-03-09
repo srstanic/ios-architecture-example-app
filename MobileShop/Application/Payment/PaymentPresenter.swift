@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: PaymentView & PaymentViewOutputs
 
-protocol PaymentView: AnyObject, AlertingView {
+protocol PaymentView: AlertingView {
     func setAmountTitle(_ amountTitle: String)
     func setChargeNote(_ chargeNote: String)
     func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String)
@@ -48,7 +48,7 @@ final class PaymentPresenter: PaymentViewOutputs {
     private let dependencies: Dependencies
     private let outputs: PaymentSceneOutputs
 
-    weak var view: PaymentView?
+    var view: PaymentView?
 
     // MARK: PaymentViewOutputs
 

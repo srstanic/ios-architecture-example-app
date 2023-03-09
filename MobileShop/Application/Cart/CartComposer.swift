@@ -28,8 +28,37 @@ final class CartComposer {
         let presenter = CartPresenter(dependencies: presenterDependencies, outputs: outputs)
 
         cartViewController.outputs = presenter
-        presenter.view = cartViewController
+        presenter.view = WeakReferenceProxy(cartViewController)
 
         return cartViewController
+    }
+}
+
+
+extension WeakReferenceProxy: CartView where ReferenceType: CartView {
+    func setPayButtonTitle(_ title: String) {
+        object?.setPayButtonTitle(title)
+    }
+
+    func showCartContent(_ cartContent: CartViewContent) {
+        object?.showCartContent(cartContent)
+    }
+}
+
+extension WeakReferenceProxy: AlertingView where ReferenceType: AlertingView {
+    func showAlert(title: String?, message: String?, actions: [AlertAction], onDismiss: VoidHandler?) {
+        object?.showAlert(title: title, message: message, actions: actions, onDismiss: onDismiss)
+    }
+}
+
+extension WeakReferenceProxy: TitledView where ReferenceType: TitledView {
+    func setTitle(_ title: String) {
+        object?.setTitle(title)
+    }
+}
+
+extension WeakReferenceProxy: LoadableView where ReferenceType: LoadableView {
+    func setLoadingIndicatorVisibility(isHidden: Bool) {
+        object?.setLoadingIndicatorVisibility(isHidden: isHidden)
     }
 }
