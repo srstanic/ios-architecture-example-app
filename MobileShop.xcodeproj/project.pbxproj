@@ -236,6 +236,7 @@
 		08209CB925716A1200FE51F5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				0888AC1029BA8F3900E0E9F4 /* CompositionRoot */,
 				08FDD95525AF155C00A5D0AE /* Launch */,
 				08209CC525716C9500FE51F5 /* Cart */,
 				083D8F5C2577D6F9006F9794 /* Payment */,
@@ -281,7 +282,6 @@
 				0877A06B2571B2BD00A69E02 /* CartPresenter.swift */,
 				0878FF4025799652007E037E /* CartTracker.swift */,
 				0878FF1725792F73007E037E /* CartCoordinator.swift */,
-				08209CD425716D5700FE51F5 /* CartComposer.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -328,7 +328,6 @@
 				0839E6A1257A7B05006FB959 /* PaymentPresenter.swift */,
 				0839E6AC257A7CB1006FB959 /* PaymentTracker.swift */,
 				0878FF29257948D6007E037E /* PaymentCoordinator.swift */,
-				0878FF1125792E50007E037E /* PaymentComposer.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -420,6 +419,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		0888AC1029BA8F3900E0E9F4 /* CompositionRoot */ = {
+			isa = PBXGroup;
+			children = (
+				08209C85257169DB00FE51F5 /* AppDelegate.swift */,
+				08209C87257169DB00FE51F5 /* SceneDelegate.swift */,
+				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
+				08209CD425716D5700FE51F5 /* CartComposer.swift */,
+				0878FF1125792E50007E037E /* PaymentComposer.swift */,
+			);
+			path = CompositionRoot;
+			sourceTree = "<group>";
+		};
 		088C64BE265AA8410039D8BF /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,9 +487,6 @@
 			isa = PBXGroup;
 			children = (
 				08209C90257169DE00FE51F5 /* LaunchScreen.storyboard */,
-				08209C85257169DB00FE51F5 /* AppDelegate.swift */,
-				08209C87257169DB00FE51F5 /* SceneDelegate.swift */,
-				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";

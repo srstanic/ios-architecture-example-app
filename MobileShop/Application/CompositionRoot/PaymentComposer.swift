@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class PaymentComposer {
+
+protocol PaymentComposing {
+    func composePaymentScene(
+        for amount: Double,
+        with outputs: PaymentSceneOutputs
+    ) -> UIViewController
+}
+
+final class PaymentComposer: PaymentComposing {
     func composePaymentScene(
         for amount: Double,
         with outputs: PaymentSceneOutputs

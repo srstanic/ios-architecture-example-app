@@ -13,6 +13,7 @@ protocol CartCoordinating {
 
 final class CartCoordinator: CartCoordinating {
     struct Dependencies {
+        let composer: CartComposing
         let paymentCoordinator: PaymentCoordinating
     }
 
@@ -20,15 +21,13 @@ final class CartCoordinator: CartCoordinating {
         self.dependencies = dependencies
     }
     private let dependencies: Dependencies
+    private weak var navigationController: UINavigationController?
 
     func transitionToCartScene(in navigationController: UINavigationController, animated: Bool) {
-        let cartScene = cartComposer.composeCartScene(with: self)
+        let cartScene = dependencies.composer.composeCartScene(with: self)
         navigationController.pushViewController(cartScene, animated: animated)
         self.navigationController = navigationController
     }
-
-    private let cartComposer = CartComposer()
-    private weak var navigationController: UINavigationController?
 }
 
 extension CartCoordinator: CartSceneOutputs {

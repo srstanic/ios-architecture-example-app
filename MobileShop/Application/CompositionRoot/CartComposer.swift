@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class CartComposer {
+protocol CartComposing {
+    func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController
+}
+
+final class CartComposer: CartComposing {
     func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController {
         let cartViewController: CartViewController = .initFromStoryboard()
 

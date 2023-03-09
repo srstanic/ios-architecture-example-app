@@ -25,7 +25,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator.start(on: window)
     }
 
-    private let appCoordinator = AppCoordinator()
+    private let appCoordinator = AppCoordinator(cartCoordinator: createCartCoordinator())
+
+    private static func createCartCoordinator() -> CartCoordinating {
+        CartCoordinator(
+            dependencies: .init(composer: CartComposer(), paymentCoordinator: createPaymentCoordinator())
+        )
+    }
+
+    private static func createPaymentCoordinator() -> PaymentCoordinating {
+        PaymentCoordinator(dependencies: .init(composer: PaymentComposer()))
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
