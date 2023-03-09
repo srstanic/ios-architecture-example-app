@@ -1,5 +1,5 @@
 //
-//  PaymentBuilder.swift
+//  PaymentComposer.swift
 //  MobileShop
 //
 //  Created by Srđan Stanić on 09/12/2020.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-final class PaymentBuilder {
-    func buildPaymentScene(
+final class PaymentComposer {
+    func composePaymentScene(
         for amount: Double,
-        with delegate: PaymentControllerDelegate
+        with outputs: PaymentSceneOutputs
     ) -> UIViewController {
         let paymentViewController: PaymentViewController = .initFromStoryboard()
 
@@ -19,17 +19,17 @@ final class PaymentBuilder {
             facebookAnalyticsService: FacebookAnalyticsService()
         )
         let localizer = Localizer()
-        let controller = PaymentController(
+        let presenter = PaymentPresenter(
             for: amount,
             dependencies: .init(
                 tracker: paymentTracker,
                 localizer: localizer
             ),
-            delegate: delegate
+            outputs: outputs
         )
 
-        paymentViewController.delegate = controller
-        controller.view = paymentViewController
+        paymentViewController.outputs = presenter
+        presenter.view = paymentViewController
 
         return paymentViewController
     }

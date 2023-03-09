@@ -22,17 +22,17 @@ final class CartCoordinator: CartCoordinating {
     private let dependencies: Dependencies
 
     func transitionToCartScene(in navigationController: UINavigationController, animated: Bool) {
-        let cartScene = cartBuilder.buildCartScene(with: self)
+        let cartScene = cartComposer.composeCartScene(with: self)
         navigationController.pushViewController(cartScene, animated: animated)
         self.navigationController = navigationController
     }
 
-    private let cartBuilder = CartBuilder()
+    private let cartComposer = CartComposer()
     private weak var navigationController: UINavigationController?
 }
 
-extension CartCoordinator: CartControllerDelegate {
-    func didChooseToPay(for amount: Double) {
+extension CartCoordinator: CartSceneOutputs {
+    func onDidChooseToPay(for amount: Double) {
         guard let navigationController = self.navigationController else {
             return
         }

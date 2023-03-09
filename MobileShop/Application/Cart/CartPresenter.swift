@@ -1,5 +1,5 @@
 //
-//  CartController.swift
+//  CartPresenter.swift
 //  MobileShop
 //
 //  Created by Srđan Stanić on 09/12/2020.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: CartView & CartViewDelegate
+// MARK: CartView & CartViewOutputs
 
-protocol CartView: AnyObject, View, LoadableView, AlertingView {
+protocol CartView: AnyObject, TitledView, LoadableView, AlertingView {
     func setPayButtonTitle(_ title: String)
     func showCartContent(_ cartContent: CartViewContent)
 }
@@ -37,14 +37,14 @@ struct CartTotalViewContent {
     let amount: String
 }
 
-protocol CartViewDelegate: AnyObject, ViewDelegate {
+protocol CartViewOutputs: AnyObject, ViewOutputs {
     func onPaymentInitiated()
 }
 
-// MARK: CartControllerDelegate
+// MARK: CartSceneOutputs
 
-protocol CartControllerDelegate {
-    func didChooseToPay(for amount: Double)
+protocol CartSceneOutputs {
+    func onDidChooseToPay(for amount: Double)
 }
 
 // MARK: CartTracking
@@ -53,23 +53,23 @@ protocol CartTracking: SceneTracking {
     func onDidChooseToPay()
 }
 
-final class CartController: CartViewDelegate {
+final class CartPresenter: CartViewOutputs {
     struct Dependencies {
         let cartService: CartServicing
         let localizer: Localizing
         let tracker: CartTracking
     }
 
-    init(dependencies: Dependencies, delegate: CartControllerDelegate) {
+    init(dependencies: Dependencies, outputs: CartSceneOutputs) {
         self.dependencies = dependencies
-        self.delegate = delegate
+        self.outputs = outputs
     }
     private let dependencies: Dependencies
-    private let delegate: CartControllerDelegate
+    private let outputs: CartSceneOutputs
 
     weak var view: CartView?
 
-    // MARK: CartViewDelegate
+    // MARK: CartViewOutputs
 
     func onViewDidLoad() {
         view?.setTitle(dependencies.localizer.localize(.title))
@@ -132,7 +132,7 @@ final class CartController: CartViewDelegate {
 
     func onPaymentInitiated() {
         dependencies.tracker.onDidChooseToPay()
-        delegate.didChooseToPay(for: cartTotal)
+        outputs.onDidChooseToPay(for: cartTotal)
     }
 }
 

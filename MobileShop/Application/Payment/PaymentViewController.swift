@@ -9,9 +9,9 @@ import UIKit
 
 class PaymentViewController: UIViewController, PaymentView {
 
-    // MARK: Delegate
+    // MARK: Outputs
 
-    var delegate: PaymentViewDelegate?
+    var outputs: PaymentViewOutputs?
 
     // MARK: PaymentView
 
@@ -39,17 +39,17 @@ class PaymentViewController: UIViewController, PaymentView {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        delegate?.onViewDidAppear()
+        outputs?.onViewDidAppear()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.onViewDidLoad()
+        outputs?.onViewDidLoad()
     }
 
     // MARK: Actions
 
     @IBAction func confirmPurchase(_ sender: Any) {
-        delegate?.onPurchaseConfirmed()
+        outputs?.onPurchaseConfirmed()
     }
 }

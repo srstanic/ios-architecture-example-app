@@ -9,9 +9,9 @@ import UIKit
 
 class CartViewController: LoadableTableViewController, CartView {
 
-    // MARK: Delegate
+    // MARK: Outputs
 
-    var delegate: CartViewDelegate?
+    var outputs: CartViewOutputs?
 
     // MARK: CartView
 
@@ -33,7 +33,7 @@ class CartViewController: LoadableTableViewController, CartView {
     }
 
     @objc private func onPayButtonTapped() {
-        delegate?.onPaymentInitiated()
+        outputs?.onPaymentInitiated()
     }
 
     func showCartContent(_ cartContent: CartViewContent) {
@@ -47,7 +47,7 @@ class CartViewController: LoadableTableViewController, CartView {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        delegate?.onViewDidLoad()
+        outputs?.onViewDidLoad()
     }
 
     private func setupTableView() {
@@ -59,7 +59,7 @@ class CartViewController: LoadableTableViewController, CartView {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        delegate?.onViewDidAppear()
+        outputs?.onViewDidAppear()
     }
 
     // MARK: UITableViewDataSource

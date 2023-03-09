@@ -1,5 +1,5 @@
 //
-//  PaymentController.swift
+//  PaymentPresenter.swift
 //  MobileShop
 //
 //  Created by Srđan Stanić on 09/12/2020.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: PaymentView & PaymentViewDelegate
+// MARK: PaymentView & PaymentViewOutputs
 
 protocol PaymentView: AnyObject, AlertingView {
     func setAmountTitle(_ amountTitle: String)
@@ -16,13 +16,13 @@ protocol PaymentView: AnyObject, AlertingView {
     func showAmount(_ amount: String)
 }
 
-protocol PaymentViewDelegate: ViewDelegate {
+protocol PaymentViewOutputs: ViewOutputs {
     func onPurchaseConfirmed()
 }
 
-// MARK: PaymentControllerDelegate
+// MARK: PaymentSceneOutputs
 
-protocol PaymentControllerDelegate {
+protocol PaymentSceneOutputs {
     func onPurchaseCompleted()
 }
 
@@ -33,24 +33,24 @@ protocol PaymentTracking: SceneTracking {
     func onDidCompletePurchase(witAmount amount: Double)
 }
 
-final class PaymentController: PaymentViewDelegate {
+final class PaymentPresenter: PaymentViewOutputs {
     struct Dependencies {
         let tracker: PaymentTracking
         let localizer: Localizing
     }
 
-    init(for amount: Double, dependencies: Dependencies, delegate: PaymentControllerDelegate) {
+    init(for amount: Double, dependencies: Dependencies, outputs: PaymentSceneOutputs) {
         self.amount = amount
         self.dependencies = dependencies
-        self.delegate = delegate
+        self.outputs = outputs
     }
     private let amount: Double
     private let dependencies: Dependencies
-    private let delegate: PaymentControllerDelegate
+    private let outputs: PaymentSceneOutputs
 
     weak var view: PaymentView?
 
-    // MARK: PaymentViewDelegate
+    // MARK: PaymentViewOutputs
 
     func onPurchaseConfirmed() {
         dependencies.tracker.onDidConfirmPurchase()
@@ -58,8 +58,8 @@ final class PaymentController: PaymentViewDelegate {
         // but since this is just an example, we'll assume the transaction went through
         // and show a success message.
         dependencies.tracker.onDidCompletePurchase(witAmount: amount)
-        showSuccessfulPurchaseAlert() { [delegate] in
-            delegate.onPurchaseCompleted()
+        showSuccessfulPurchaseAlert() { [outputs] in
+            outputs.onPurchaseCompleted()
         }
     }
 
