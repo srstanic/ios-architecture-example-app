@@ -10,11 +10,19 @@ import Foundation
 
 final class LocalizerStub: Localizing {
     func localize(_ key: String) -> String {
-        return key
+        localized(key)
     }
 
     func localize(_ key: String, _ values: CVarArg...) -> String {
-        let stringValues = values.map { "\($0)"}
-        return "\(key),\(stringValues.joined(separator: ","))"
+        localized(key, values)
     }
+}
+
+func localized(_ string: String) -> String {
+    return "LOCALIZED_\(string)"
+}
+
+func localized(_ key: String, _ values: CVarArg...) -> String {
+    let stringValues = values.map { "\($0)"}
+    return "\(localized(key)),\(stringValues.joined(separator: ","))"
 }

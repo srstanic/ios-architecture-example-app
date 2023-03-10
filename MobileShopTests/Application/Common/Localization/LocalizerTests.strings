@@ -1,0 +1,4 @@
+// MARK: Test Strings
+"TEST_STRING" = "Test String";
+"TEST_STRING_WITH_ARGUMENTS" = "Test String With %@";
+

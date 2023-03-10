@@ -93,10 +93,10 @@ final class PaymentPresenter: PaymentViewOutputs {
 
 private extension String {
     static let amountTitle = "PAYMENT_SCENE_AMOUNT_TITLE"
+    static let priceAmount = "PAYMENT_SCENE_PRICE_AMOUNT"
     static let chargeNote = "PAYMENT_SCENE_CHARGE_NOTE"
     static let confirmPurchaseButtonTitle = "PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE"
     static let successAlertTitle = "PAYMENT_SUCCESS_ALERT_TITLE"
     static let successAlertMessage = "PAYMENT_SUCCESS_ALERT_MESSAGE"
     static let successAlertButtonTitle = "PAYMENT_SUCCESS_ALERT_BUTTON_TITLE"
-    static let priceAmount = "PRICE_AMOUNT"
 }

@@ -35,10 +35,10 @@ class PaymentPresenterTests: XCTestCase {
 
         sut.onViewDidLoad()
 
-        XCTAssertEqual(paymentViewSpy.recordedAmountTitles, ["PAYMENT_SCENE_AMOUNT_TITLE"])
-        XCTAssertEqual(paymentViewSpy.recordedAmountsShown, ["PRICE_AMOUNT,10.00"])
-        XCTAssertEqual(paymentViewSpy.recordedChargeNotes, ["PAYMENT_SCENE_CHARGE_NOTE"])
-        XCTAssertEqual(paymentViewSpy.recodedConfirmPurchaseButtonTitles, ["PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE"])
+        XCTAssertEqual(paymentViewSpy.recordedAmountTitles, [localized("PAYMENT_SCENE_AMOUNT_TITLE")])
+        XCTAssertEqual(paymentViewSpy.recordedAmountsShown, [localized("PAYMENT_SCENE_PRICE_AMOUNT", "10.00")])
+        XCTAssertEqual(paymentViewSpy.recordedChargeNotes, [localized("PAYMENT_SCENE_CHARGE_NOTE")])
+        XCTAssertEqual(paymentViewSpy.recodedConfirmPurchaseButtonTitles, [localized("PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE")])
     }
 
     func testDidConfirmPayment() {
@@ -48,9 +48,9 @@ class PaymentPresenterTests: XCTestCase {
         sut.onPurchaseConfirmed()
 
         let expectedAlertContent = RecordedAlertContent(
-            title: "PAYMENT_SUCCESS_ALERT_TITLE",
-            message: "PAYMENT_SUCCESS_ALERT_MESSAGE",
-            actionTitles: ["PAYMENT_SUCCESS_ALERT_BUTTON_TITLE"]
+            title: localized("PAYMENT_SUCCESS_ALERT_TITLE"),
+            message: localized("PAYMENT_SUCCESS_ALERT_MESSAGE"),
+            actionTitles: [localized("PAYMENT_SUCCESS_ALERT_BUTTON_TITLE")]
         )
         XCTAssertEqual(paymentViewSpy.recordedAlertContents, [expectedAlertContent])
 

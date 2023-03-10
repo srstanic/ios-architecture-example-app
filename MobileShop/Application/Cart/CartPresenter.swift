@@ -195,5 +195,5 @@ private extension String {
     static let errorTitle = "CART_SCENE_ERROR_TITLE"
     static let errorMessage = "CART_SCENE_ERROR_MESSAGE"
     static let errorActionTitle = "CART_SCENE_ERROR_ACTION_TITLE"
-    static let priceAmount = "PRICE_AMOUNT"
+    static let priceAmount = "CART_SCENE_PRICE_AMOUNT"
 }

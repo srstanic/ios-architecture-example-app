@@ -1,0 +1,10 @@
+// MARK: Payment Scene
+"PAYMENT_SCENE_AMOUNT_TITLE" = "Amount:";
+"PAYMENT_SCENE_PRICE_AMOUNT" = "$%@";
+"PAYMENT_SCENE_CHARGE_NOTE" = "Your credit card will be charged after confirmation";
+"PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE" = "Confirm Purchase";
+
+// MARK: Payment Success Alert
+"PAYMENT_SUCCESS_ALERT_TITLE" = "Successful Purchase";
+"PAYMENT_SUCCESS_ALERT_MESSAGE" = "Thank you for shopping with us!";
+"PAYMENT_SUCCESS_ALERT_BUTTON_TITLE" = "My pleasure";

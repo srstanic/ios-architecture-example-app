@@ -18,7 +18,7 @@ final class CartComposer: CartComposing {
         let mobileShopApiClient = MobileShopApiClient.development()
         let cartService = CartRemoteService(apiClient: mobileShopApiClient)
 
-        let localizer = Localizer()
+        let localizer = NSLocalizer(forType: CartPresenter.self, tableName: "Cart")
 
         let firebaseAnalyticsService = FirebaseAnalyticsService()
         let cartTracker = CartTracker(firebaseAnalyticsService: firebaseAnalyticsService)

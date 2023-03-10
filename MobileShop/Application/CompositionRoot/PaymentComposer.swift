@@ -26,7 +26,7 @@ final class PaymentComposer: PaymentComposing {
             firebaseAnalyticsService: FirebaseAnalyticsService(),
             facebookAnalyticsService: FacebookAnalyticsService()
         )
-        let localizer = Localizer()
+        let localizer = NSLocalizer(forType: PaymentPresenter.self, tableName: "Payment")
         let presenter = PaymentPresenter(
             for: amount,
             dependencies: .init(

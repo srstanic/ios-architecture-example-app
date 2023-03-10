@@ -10,12 +10,16 @@ import XCTest
 
 class LocalizerTests: XCTestCase {
     func testString() throws {
-        let sut = Localizer()
+        let sut = buildSUT()
         XCTAssertEqual(sut.localize("TEST_STRING"), "Test String")
     }
 
     func testStringWithArguments() throws {
-        let sut = Localizer()
+        let sut = buildSUT()
         XCTAssertEqual(sut.localize("TEST_STRING_WITH_ARGUMENTS", "Arguments"), "Test String With Arguments")
+    }
+
+    private func buildSUT() -> Localizing {
+        NSLocalizer(forType: LocalizerTests.self, tableName: "LocalizerTests")
     }
 }
