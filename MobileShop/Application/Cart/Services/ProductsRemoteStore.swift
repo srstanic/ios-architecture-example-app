@@ -15,7 +15,7 @@ struct RemoteStoreProduct: Codable {
     let price: Double
 }
 
-final class ProductsRemoteStore: RemoteStore {
+final class ProductsRemoteStore: MobileShopRemoteStore {
     func getProducts(withIds productIds: [String], completion: @escaping RemoteStoreProductsResultHandler) {
         apiClient.request(path: "products") { (productsResult: Result<[RemoteStoreProduct], Error>) in
             switch productsResult {

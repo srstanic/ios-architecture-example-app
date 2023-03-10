@@ -1,5 +1,5 @@
 //
-//  MobileShopApiClient.swift
+//  URLSessionMobileShopAPIClient.swift
 //  MobileShop
 //
 //  Created by Srđan Stanić on 09/12/2020.
@@ -7,11 +7,7 @@
 
 import Foundation
 
-enum MobileShopApiClientError: Error {
-    case failedToLoadModel
-}
-
-final class MobileShopApiClient: RemoteApiClient {
+final class URLSessionMobileShopAPIClient: MobileShopAPIClient {
     init(scheme: String, host: String, pathPrefix: String) {
         self.scheme = scheme
         self.host = host
@@ -22,7 +18,7 @@ final class MobileShopApiClient: RemoteApiClient {
     private let pathPrefix: String
 
     func request<ModelType: Codable>(
-        _ request: RemoteApiRequest,
+        _ request: MobileShopAPIRequest,
         completion: @escaping (Result<ModelType, Error>) -> Void
     ) {
         let session = URLSession.shared
@@ -38,19 +34,19 @@ final class MobileShopApiClient: RemoteApiClient {
         session.dataTask(with: url, completionHandler: { data, response, error in
             guard error == nil else {
                 print("Error: \(error!)")
-                completion(.failure(MobileShopApiClientError.failedToLoadModel))
+                completion(.failure(MobileShopAPIClientError.failedToLoadModel))
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
                 print("Unknown response")
-                completion(.failure(MobileShopApiClientError.failedToLoadModel))
+                completion(.failure(MobileShopAPIClientError.failedToLoadModel))
                 return
             }
 
             guard (200...299).contains(httpResponse.statusCode) else {
                 print("Status code: \(httpResponse.statusCode)")
-                completion(.failure(MobileShopApiClientError.failedToLoadModel))
+                completion(.failure(MobileShopAPIClientError.failedToLoadModel))
                 return
             }
 
@@ -62,7 +58,7 @@ final class MobileShopApiClient: RemoteApiClient {
                 completion(.success(decodedData))
             } else {
                 print("Unable to decode data")
-                completion(.failure(MobileShopApiClientError.failedToLoadModel))
+                completion(.failure(MobileShopAPIClientError.failedToLoadModel))
             }
         }).resume()
     }

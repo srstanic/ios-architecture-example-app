@@ -16,7 +16,7 @@ struct RemoteStoreDiscount: Codable {
     let productId: String?
 }
 
-final class DiscountsRemoteStore: RemoteStore {
+final class DiscountsRemoteStore: MobileShopRemoteStore {
     func getDiscounts(withIds discountIds: [String], completion: @escaping RemoteStoreDiscountsResultHandler) {
         apiClient.request(path: "discounts") { (discountsResult: Result<[RemoteStoreDiscount], Error>) in
             switch discountsResult {

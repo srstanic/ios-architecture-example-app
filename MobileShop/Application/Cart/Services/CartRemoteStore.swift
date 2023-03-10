@@ -20,7 +20,7 @@ struct RemoteStoreProductCartItem: Codable {
     let quantity: Int
 }
 
-final class CartRemoteStore: RemoteStore {
+final class CartRemoteStore: MobileShopRemoteStore {
     func getCart(completion: @escaping RemoteStoreCartResultHandler) {
         apiClient.request(path: "cart", completion: completion)
     }

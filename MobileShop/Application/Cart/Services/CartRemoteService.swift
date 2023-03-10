@@ -8,7 +8,7 @@
 import Foundation
 
 final class CartRemoteService: CartServicing {
-    init(apiClient: RemoteApiClient) {
+    init(apiClient: MobileShopAPIClient) {
         cartStore = CartRemoteStore(apiClient: apiClient)
         productsStore = ProductsRemoteStore(apiClient: apiClient)
         discountsStore = DiscountsRemoteStore(apiClient: apiClient)

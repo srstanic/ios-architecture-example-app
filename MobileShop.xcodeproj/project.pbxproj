@@ -38,10 +38,9 @@
 		086BB778257E685D00249899 /* PaymentPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086BB777257E685D00249899 /* PaymentPresenterTests.swift */; };
 		086BB77F257E6AA100249899 /* AlertingViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086BB77E257E6AA100249899 /* AlertingViewSpy.swift */; };
 		0877A06C2571B2BD00A69E02 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0877A06B2571B2BD00A69E02 /* CartPresenter.swift */; };
-		0878FEEC2579246E007E037E /* RemoteApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEEB2579246E007E037E /* RemoteApiClient.swift */; };
-		0878FEF0257924B9007E037E /* MobileShopApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEEF257924B9007E037E /* MobileShopApiClient.swift */; };
-		0878FEF425792592007E037E /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEF325792592007E037E /* RemoteStore.swift */; };
-		0878FEFA257928D4007E037E /* RemoteApiClient+MobileShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEF9257928D4007E037E /* RemoteApiClient+MobileShop.swift */; };
+		0878FEEC2579246E007E037E /* MobileShopAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEEB2579246E007E037E /* MobileShopAPIClient.swift */; };
+		0878FEF0257924B9007E037E /* URLSessionMobileShopAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEEF257924B9007E037E /* URLSessionMobileShopAPIClient.swift */; };
+		0878FEF425792592007E037E /* MobileShopRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEF325792592007E037E /* MobileShopRemoteStore.swift */; };
 		0878FF0025792B0C007E037E /* DiscountsRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */; };
 		0878FF0A25792DCC007E037E /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF0925792DCC007E037E /* PaymentViewController.swift */; };
 		0878FF0E25792DDB007E037E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0878FF0D25792DDB007E037E /* Payment.storyboard */; };
@@ -127,10 +126,9 @@
 		086BB777257E685D00249899 /* PaymentPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPresenterTests.swift; sourceTree = "<group>"; };
 		086BB77E257E6AA100249899 /* AlertingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertingViewSpy.swift; sourceTree = "<group>"; };
 		0877A06B2571B2BD00A69E02 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
-		0878FEEB2579246E007E037E /* RemoteApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteApiClient.swift; sourceTree = "<group>"; };
-		0878FEEF257924B9007E037E /* MobileShopApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileShopApiClient.swift; sourceTree = "<group>"; };
-		0878FEF325792592007E037E /* RemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
-		0878FEF9257928D4007E037E /* RemoteApiClient+MobileShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteApiClient+MobileShop.swift"; sourceTree = "<group>"; };
+		0878FEEB2579246E007E037E /* MobileShopAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileShopAPIClient.swift; sourceTree = "<group>"; };
+		0878FEEF257924B9007E037E /* URLSessionMobileShopAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMobileShopAPIClient.swift; sourceTree = "<group>"; };
+		0878FEF325792592007E037E /* MobileShopRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileShopRemoteStore.swift; sourceTree = "<group>"; };
 		0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsRemoteStore.swift; sourceTree = "<group>"; };
 		0878FF0925792DCC007E037E /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		0878FF0D25792DDB007E037E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
@@ -459,30 +457,21 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
-		08CE88FC25791F2400BEE7EF /* Networking */ = {
+		08CE88FD25791F4000BEE7EF /* MobileShopAPI */ = {
 			isa = PBXGroup;
 			children = (
-				0878FEEB2579246E007E037E /* RemoteApiClient.swift */,
-				0878FEF325792592007E037E /* RemoteStore.swift */,
+				0878FEEB2579246E007E037E /* MobileShopAPIClient.swift */,
+				0878FEEF257924B9007E037E /* URLSessionMobileShopAPIClient.swift */,
+				0878FEF325792592007E037E /* MobileShopRemoteStore.swift */,
 			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		08CE88FD25791F4000BEE7EF /* MobileShopRemoteAPI */ = {
-			isa = PBXGroup;
-			children = (
-				0878FEEF257924B9007E037E /* MobileShopApiClient.swift */,
-				0878FEF9257928D4007E037E /* RemoteApiClient+MobileShop.swift */,
-			);
-			path = MobileShopRemoteAPI;
+			path = MobileShopAPI;
 			sourceTree = "<group>";
 		};
 		08FDD95225AF141A00A5D0AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				0888AC0E29BA37AF00E0E9F4 /* WeakReferenceProxy.swift */,
-				08CE88FD25791F4000BEE7EF /* MobileShopRemoteAPI */,
-				08CE88FC25791F2400BEE7EF /* Networking */,
+				08CE88FD25791F4000BEE7EF /* MobileShopAPI */,
 				0878FF44257996C9007E037E /* Tracking */,
 				0839E6A5257A7B89006FB959 /* View */,
 				084AAA51257E972500DE7EE1 /* Localization */,
@@ -614,8 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0878FEF0257924B9007E037E /* MobileShopApiClient.swift in Sources */,
-				0878FEFA257928D4007E037E /* RemoteApiClient+MobileShop.swift in Sources */,
+				0878FEF0257924B9007E037E /* URLSessionMobileShopAPIClient.swift in Sources */,
 				083B88D3257ACED20073140C /* UIAlertController+Extensions.swift in Sources */,
 				0878FF4125799652007E037E /* CartTracker.swift in Sources */,
 				0888AC0F29BA37AF00E0E9F4 /* WeakReferenceProxy.swift in Sources */,
@@ -628,7 +616,7 @@
 				0878FF0A25792DCC007E037E /* PaymentViewController.swift in Sources */,
 				08FF95732581428D0095A408 /* UITableViewCell+Extensions.swift in Sources */,
 				087AC876257663DE006FF4E6 /* Discount.swift in Sources */,
-				0878FEEC2579246E007E037E /* RemoteApiClient.swift in Sources */,
+				0878FEEC2579246E007E037E /* MobileShopAPIClient.swift in Sources */,
 				087AC83625756391006FF4E6 /* CartItemView.swift in Sources */,
 				0878FF4C257A5327007E037E /* FirebaseAnalyticsService.swift in Sources */,
 				08209CD525716D5700FE51F5 /* CartComposer.swift in Sources */,
@@ -661,7 +649,7 @@
 				0839E6A2257A7B05006FB959 /* PaymentPresenter.swift in Sources */,
 				087AC85C25756BAE006FF4E6 /* UIView+LayoutConstraints.swift in Sources */,
 				086BB757257E4F5400249899 /* AlertingView+UIViewController.swift in Sources */,
-				0878FEF425792592007E037E /* RemoteStore.swift in Sources */,
+				0878FEF425792592007E037E /* MobileShopRemoteStore.swift in Sources */,
 				084AAA6A257E9BCF00DE7EE1 /* NSLocalizer.swift in Sources */,
 				084AAA87257FEC2F00DE7EE1 /* LoadableView.swift in Sources */,
 				0878FF46257996D9007E037E /* SceneTracking.swift in Sources */,

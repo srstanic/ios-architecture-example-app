@@ -9,18 +9,8 @@ import XCTest
 @testable import MobileShop
 
 class CartRemoteServiceTests: XCTestCase {
-    private var mockRemoteApiClient: RemoteApiClientStub!
-
-    override func setUpWithError() throws {
-        mockRemoteApiClient = RemoteApiClientStub()
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testGetCart() throws {
-        let sut = CartRemoteService(apiClient: mockRemoteApiClient)
+        let sut = buildSUT()
         let cartResultExpectation = expectation(description: "Cart result received")
         sut.getCart { result in
             if case let .success(cart) = result {
@@ -38,6 +28,10 @@ class CartRemoteServiceTests: XCTestCase {
             }
         }
         waitForExpectations(timeout: 0.1)
+    }
+
+    private func buildSUT() -> CartRemoteService {
+        CartRemoteService(apiClient: MobileShopAPIClientStub())
     }
 
     fileprivate static let remoteStoreCart: RemoteStoreCart = {
@@ -66,8 +60,8 @@ class CartRemoteServiceTests: XCTestCase {
     ]
 }
 
-fileprivate final class RemoteApiClientStub: RemoteApiClient {
-    func request<ModelType: Codable>(_ request: RemoteApiRequest, completion: @escaping (Result<ModelType, Error>) -> Void) {
+fileprivate final class MobileShopAPIClientStub: MobileShopAPIClient {
+    func request<ModelType: Codable>(_ request: MobileShopAPIRequest, completion: @escaping (Result<ModelType, Error>) -> Void) {
         if
             let model = CartRemoteServiceTests.remoteStoreCart as? ModelType,
             request.path == "cart"
