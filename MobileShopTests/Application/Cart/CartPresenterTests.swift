@@ -10,7 +10,6 @@ import XCTest
 
 class CartPresenterTests: XCTestCase {
     private var cartServiceStub: CartServiceStub!
-    private var cartTracker: CartTracking!
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!
     private var localizerStub: LocalizerStub!
     private var cartSceneOutputsSpy: CartSceneOutputsSpy!
@@ -20,7 +19,6 @@ class CartPresenterTests: XCTestCase {
         cartServiceStub = CartServiceStub()
         firebaseAnalyticsServiceStub = FirebaseAnalyticsServiceStub()
         localizerStub = LocalizerStub()
-        cartTracker = CartTracker(firebaseAnalyticsService: firebaseAnalyticsServiceStub)
         cartSceneOutputsSpy = CartSceneOutputsSpy()
         cartViewSpy = CartViewSpy()
     }
@@ -118,28 +116,11 @@ class CartPresenterTests: XCTestCase {
         XCTAssertEqual(cartSceneOutputsSpy.recordedOnDidChooseToPayAmounts, [cartTotal])
     }
 
-    func testTrackingVisit() {
-        let sut = buildSUT()
-
-        sut.onViewDidAppear()
-
-        XCTAssertEqual(firebaseAnalyticsServiceStub.recordedEvents, [.sceneVisitEvent("Cart")])
-    }
-
-    func testTrackingPaymentInitiated() {
-        let sut = buildSUT()
-
-        sut.onPaymentInitiated()
-
-        XCTAssertEqual(firebaseAnalyticsServiceStub.recordedEvents, [.userActionEvent("Pay")])
-    }
-
     private func buildSUT() -> CartPresenter {
         return CartPresenter(
             dependencies: .init(
                 cartService: cartServiceStub,
-                localizer: localizerStub,
-                tracker: cartTracker
+                localizer: localizerStub
             ),
             outputs: cartSceneOutputsSpy
         )

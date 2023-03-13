@@ -47,17 +47,10 @@ protocol CartSceneOutputs {
     func onDidChooseToPay(for amount: Double)
 }
 
-// MARK: CartTracking
-
-protocol CartTracking: SceneTracking {
-    func onDidChooseToPay()
-}
-
 final class CartPresenter: CartViewOutputs {
     struct Dependencies {
         let cartService: CartServicing
         let localizer: Localizing
-        let tracker: CartTracking
     }
 
     init(dependencies: Dependencies, outputs: CartSceneOutputs) {
@@ -124,14 +117,11 @@ final class CartPresenter: CartViewOutputs {
 
     func onViewWillAppear() {}
 
-    func onViewDidAppear() {
-        dependencies.tracker.onDidVisitScene()
-    }
+    func onViewDidAppear() {}
 
     func onViewDidDisappear() {}
 
     func onPaymentInitiated() {
-        dependencies.tracker.onDidChooseToPay()
         outputs.onDidChooseToPay(for: cartTotal)
     }
 }

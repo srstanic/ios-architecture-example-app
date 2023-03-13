@@ -13,6 +13,9 @@
 		080B868E29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */; };
 		080B869229BF71B30083D0FA /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869129BF71B30083D0FA /* UIControl+Extensions.swift */; };
 		080B869429BF71C70083D0FA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869329BF71C70083D0FA /* UIButton+Extensions.swift */; };
+		080B869829BFC3F20083D0FA /* CartSceneAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869729BFC3F20083D0FA /* CartSceneAnalyticsTests.swift */; };
+		080B869B29BFC4FD0083D0FA /* ViewOutputs+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869A29BFC4FD0083D0FA /* ViewOutputs+Extensions.swift */; };
+		080B86A029BFCB010083D0FA /* CartSceneAnalyticsDecorators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869F29BFCB010083D0FA /* CartSceneAnalyticsDecorators.swift */; };
 		08137858257A626300FFE4AE /* CartRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08137857257A626300FFE4AE /* CartRemoteService.swift */; };
 		08209C86257169DB00FE51F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C85257169DB00FE51F5 /* AppDelegate.swift */; };
 		08209C88257169DB00FE51F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C87257169DB00FE51F5 /* SceneDelegate.swift */; };
@@ -54,7 +57,6 @@
 		0878FF2A257948D6007E037E /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF29257948D6007E037E /* PaymentCoordinator.swift */; };
 		0878FF31257979EA007E037E /* CartRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF30257979EA007E037E /* CartRemoteServiceTests.swift */; };
 		0878FF3D25798CBD007E037E /* CartPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF3C25798CBD007E037E /* CartPresenterTests.swift */; };
-		0878FF4125799652007E037E /* CartTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF4025799652007E037E /* CartTracker.swift */; };
 		0878FF46257996D9007E037E /* SceneTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF45257996D9007E037E /* SceneTracking.swift */; };
 		0878FF4C257A5327007E037E /* FirebaseAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF4B257A5327007E037E /* FirebaseAnalyticsService.swift */; };
 		087AC83625756391006FF4E6 /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087AC83525756391006FF4E6 /* CartItemView.swift */; };
@@ -102,6 +104,9 @@
 		080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneAnalyticsTests.swift; sourceTree = "<group>"; };
 		080B869129BF71B30083D0FA /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
 		080B869329BF71C70083D0FA /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		080B869729BFC3F20083D0FA /* CartSceneAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSceneAnalyticsTests.swift; sourceTree = "<group>"; };
+		080B869A29BFC4FD0083D0FA /* ViewOutputs+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewOutputs+Extensions.swift"; sourceTree = "<group>"; };
+		080B869F29BFCB010083D0FA /* CartSceneAnalyticsDecorators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSceneAnalyticsDecorators.swift; sourceTree = "<group>"; };
 		08137857257A626300FFE4AE /* CartRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteService.swift; sourceTree = "<group>"; };
 		08209C82257169DB00FE51F5 /* MobileShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08209C85257169DB00FE51F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +152,6 @@
 		0878FF29257948D6007E037E /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
 		0878FF30257979EA007E037E /* CartRemoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteServiceTests.swift; sourceTree = "<group>"; };
 		0878FF3C25798CBD007E037E /* CartPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenterTests.swift; sourceTree = "<group>"; };
-		0878FF4025799652007E037E /* CartTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTracker.swift; sourceTree = "<group>"; };
 		0878FF45257996D9007E037E /* SceneTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTracking.swift; sourceTree = "<group>"; };
 		0878FF4B257A5327007E037E /* FirebaseAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsService.swift; sourceTree = "<group>"; };
 		087AC83525756391006FF4E6 /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
@@ -196,12 +200,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080B868129BF4FB00083D0FA /* AnalyticsDecorators */ = {
+		080B868129BF4FB00083D0FA /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				080B869C29BFCAD50083D0FA /* Cart */,
 				080B868229BF4FD10083D0FA /* Payment */,
 			);
-			path = AnalyticsDecorators;
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		080B868229BF4FD10083D0FA /* Payment */ = {
@@ -215,17 +220,18 @@
 		080B868A29BF635D0083D0FA /* CompositionRoot */ = {
 			isa = PBXGroup;
 			children = (
-				080B868B29BF63910083D0FA /* AnalyticsDecorators */,
+				080B868B29BF63910083D0FA /* Analytics */,
 			);
 			path = CompositionRoot;
 			sourceTree = "<group>";
 		};
-		080B868B29BF63910083D0FA /* AnalyticsDecorators */ = {
+		080B868B29BF63910083D0FA /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				080B869629BFC3DE0083D0FA /* Cart */,
 				080B868C29BF639A0083D0FA /* Payment */,
 			);
-			path = AnalyticsDecorators;
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		080B868C29BF639A0083D0FA /* Payment */ = {
@@ -251,6 +257,22 @@
 				080B869329BF71C70083D0FA /* UIButton+Extensions.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		080B869629BFC3DE0083D0FA /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				080B869729BFC3F20083D0FA /* CartSceneAnalyticsTests.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		080B869C29BFCAD50083D0FA /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				080B869F29BFCB010083D0FA /* CartSceneAnalyticsDecorators.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		08209C79257169DB00FE51F5 = {
@@ -353,7 +375,6 @@
 				088D502B25CB60A50073E046 /* Cart.storyboard */,
 				08209C89257169DB00FE51F5 /* CartViewController.swift */,
 				0877A06B2571B2BD00A69E02 /* CartPresenter.swift */,
-				0878FF4025799652007E037E /* CartTracker.swift */,
 				0878FF1725792F73007E037E /* CartCoordinator.swift */,
 				0888AC1929BBE1F700E0E9F4 /* Cart.strings */,
 			);
@@ -456,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				086BB77E257E6AA100249899 /* AlertingViewSpy.swift */,
+				080B869A29BFC4FD0083D0FA /* ViewOutputs+Extensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -504,7 +526,7 @@
 				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
 				08209CD425716D5700FE51F5 /* CartComposer.swift */,
 				0878FF1125792E50007E037E /* PaymentComposer.swift */,
-				080B868129BF4FB00083D0FA /* AnalyticsDecorators */,
+				080B868129BF4FB00083D0FA /* Analytics */,
 			);
 			path = CompositionRoot;
 			sourceTree = "<group>";
@@ -676,7 +698,6 @@
 			files = (
 				0878FEF0257924B9007E037E /* URLSessionMobileShopAPIClient.swift in Sources */,
 				083B88D3257ACED20073140C /* UIAlertController+Extensions.swift in Sources */,
-				0878FF4125799652007E037E /* CartTracker.swift in Sources */,
 				0888AC0F29BA37AF00E0E9F4 /* WeakReferenceProxy.swift in Sources */,
 				0839E6A7257A7B9A006FB959 /* ViewOutputs.swift in Sources */,
 				080B868929BF5F730083D0FA /* PaymentSceneAnalyticsDecorators.swift in Sources */,
@@ -687,6 +708,7 @@
 				087AC85725756B76006FF4E6 /* CartItemTableViewCell.swift in Sources */,
 				0878FF0A25792DCC007E037E /* PaymentViewController.swift in Sources */,
 				08FF95732581428D0095A408 /* UITableViewCell+Extensions.swift in Sources */,
+				080B86A029BFCB010083D0FA /* CartSceneAnalyticsDecorators.swift in Sources */,
 				087AC876257663DE006FF4E6 /* Discount.swift in Sources */,
 				080B868829BF525E0083D0FA /* NullPaymentService.swift in Sources */,
 				0878FEEC2579246E007E037E /* MobileShopAPIClient.swift in Sources */,
@@ -737,10 +759,12 @@
 				086BB773257E61CA00249899 /* FacebookAnalyticsServiceStub.swift in Sources */,
 				080B869429BF71C70083D0FA /* UIButton+Extensions.swift in Sources */,
 				084AAA75257F924700DE7EE1 /* LocalizerStub.swift in Sources */,
+				080B869B29BFC4FD0083D0FA /* ViewOutputs+Extensions.swift in Sources */,
 				080B868E29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift in Sources */,
 				086BB778257E685D00249899 /* PaymentPresenterTests.swift in Sources */,
 				084AAA83257FA1F800DE7EE1 /* LocalizerTests.swift in Sources */,
 				086BB76D257E60DB00249899 /* FirebaseAnalyticsServiceStub.swift in Sources */,
+				080B869829BFC3F20083D0FA /* CartSceneAnalyticsTests.swift in Sources */,
 				0878FF3D25798CBD007E037E /* CartPresenterTests.swift in Sources */,
 				080B869229BF71B30083D0FA /* UIControl+Extensions.swift in Sources */,
 				086BB77F257E6AA100249899 /* AlertingViewSpy.swift in Sources */,

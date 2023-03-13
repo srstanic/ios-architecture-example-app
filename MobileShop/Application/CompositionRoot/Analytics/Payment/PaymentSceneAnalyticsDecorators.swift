@@ -24,13 +24,16 @@ final class PaymentSceneAnalyticsDecorators {
         func onViewDidLoad() {
             decoratee.onViewDidLoad()
         }
+        
         func onViewWillAppear() {
             decoratee.onViewWillAppear()
         }
+        
         func onViewDidAppear() {
             decoratee.onViewDidAppear()
             firebaseAnalyticsService.logSceneVisit(titled: "Payment")
         }
+        
         func onViewDidDisappear() {
             decoratee.onViewDidDisappear()
         }

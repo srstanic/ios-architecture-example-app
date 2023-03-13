@@ -76,10 +76,3 @@ final class PaymentSceneAnalyticsTests: XCTestCase {
 private final class PaymentSceneOutputsStub: PaymentSceneOutputs {
     func onPurchaseCompleted() {}
 }
-
-private extension PaymentViewOutputs {
-    func appearedOnScreen() {
-        onViewWillAppear()
-        onViewDidAppear()
-    }
-}

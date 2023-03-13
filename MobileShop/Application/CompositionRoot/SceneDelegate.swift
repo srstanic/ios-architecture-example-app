@@ -29,7 +29,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private static func createCartCoordinator() -> CartCoordinating {
         CartCoordinator(
-            dependencies: .init(composer: CartComposer(), paymentCoordinator: createPaymentCoordinator())
+            dependencies: .init(
+                composer: CartComposer(
+                    provideFirebaseAnalyticsServicing: FirebaseAnalyticsService.init
+                ),
+                paymentCoordinator: createPaymentCoordinator()
+            )
         )
     }
 
