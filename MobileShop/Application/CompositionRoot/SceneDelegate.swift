@@ -34,7 +34,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private static func createPaymentCoordinator() -> PaymentCoordinating {
-        PaymentCoordinator(dependencies: .init(composer: PaymentComposer()))
+        PaymentCoordinator(dependencies:
+            .init(composer:
+                PaymentComposer(
+                    provideFirebaseAnalyticsServicing: FirebaseAnalyticsService.init,
+                    provideFacebookAnalyticsServicing: FacebookAnalyticsService.init
+                )
+            )
+        )
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

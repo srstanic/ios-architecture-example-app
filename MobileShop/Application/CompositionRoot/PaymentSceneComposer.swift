@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol PaymentComposing {
     func composePaymentScene(
         for amount: Double,
@@ -16,6 +15,16 @@ protocol PaymentComposing {
 }
 
 final class PaymentComposer: PaymentComposing {
+    private let provideFirebaseAnalyticsServicing: () -> FirebaseAnalyticsServicing
+    private let provideFacebookAnalyticsServicing: () -> FacebookAnalyticsServicing
+    init(
+        provideFirebaseAnalyticsServicing: @escaping () -> FirebaseAnalyticsServicing,
+        provideFacebookAnalyticsServicing: @escaping () -> FacebookAnalyticsServicing
+    ) {
+        self.provideFirebaseAnalyticsServicing = provideFirebaseAnalyticsServicing
+        self.provideFacebookAnalyticsServicing = provideFacebookAnalyticsServicing
+    }
+
     func composePaymentScene(
         for amount: Double,
         with outputs: PaymentSceneOutputs
@@ -23,8 +32,8 @@ final class PaymentComposer: PaymentComposing {
         let paymentViewController: PaymentViewController = .initFromStoryboard()
 
         let paymentTracker = PaymentTracker(
-            firebaseAnalyticsService: FirebaseAnalyticsService(),
-            facebookAnalyticsService: FacebookAnalyticsService()
+            firebaseAnalyticsService: provideFirebaseAnalyticsServicing(),
+            facebookAnalyticsService: provideFacebookAnalyticsServicing()
         )
         let localizer = NSLocalizer(forType: PaymentPresenter.self, tableName: "Payment")
         let presenter = PaymentPresenter(

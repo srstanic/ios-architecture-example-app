@@ -10,6 +10,9 @@
 		080B868629BF51B40083D0FA /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868529BF51B40083D0FA /* PaymentService.swift */; };
 		080B868829BF525E0083D0FA /* NullPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868729BF525E0083D0FA /* NullPaymentService.swift */; };
 		080B868929BF5F730083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868329BF4FF10083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift */; };
+		080B868E29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */; };
+		080B869229BF71B30083D0FA /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869129BF71B30083D0FA /* UIControl+Extensions.swift */; };
+		080B869429BF71C70083D0FA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869329BF71C70083D0FA /* UIButton+Extensions.swift */; };
 		08137858257A626300FFE4AE /* CartRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08137857257A626300FFE4AE /* CartRemoteService.swift */; };
 		08209C86257169DB00FE51F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C85257169DB00FE51F5 /* AppDelegate.swift */; };
 		08209C88257169DB00FE51F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209C87257169DB00FE51F5 /* SceneDelegate.swift */; };
@@ -47,7 +50,7 @@
 		0878FF0025792B0C007E037E /* DiscountsRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */; };
 		0878FF0A25792DCC007E037E /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF0925792DCC007E037E /* PaymentViewController.swift */; };
 		0878FF0E25792DDB007E037E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0878FF0D25792DDB007E037E /* Payment.storyboard */; };
-		0878FF1225792E50007E037E /* PaymentComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF1125792E50007E037E /* PaymentComposer.swift */; };
+		0878FF1225792E50007E037E /* PaymentSceneComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF1125792E50007E037E /* PaymentSceneComposer.swift */; };
 		0878FF1825792F73007E037E /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF1725792F73007E037E /* CartCoordinator.swift */; };
 		0878FF2A257948D6007E037E /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF29257948D6007E037E /* PaymentCoordinator.swift */; };
 		0878FF31257979EA007E037E /* CartRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF30257979EA007E037E /* CartRemoteServiceTests.swift */; };
@@ -97,6 +100,9 @@
 		080B868329BF4FF10083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewOutputsAnalyticsDecorator.swift; sourceTree = "<group>"; };
 		080B868529BF51B40083D0FA /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		080B868729BF525E0083D0FA /* NullPaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullPaymentService.swift; sourceTree = "<group>"; };
+		080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneAnalyticsTests.swift; sourceTree = "<group>"; };
+		080B869129BF71B30083D0FA /* UIControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extensions.swift"; sourceTree = "<group>"; };
+		080B869329BF71C70083D0FA /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		08137857257A626300FFE4AE /* CartRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteService.swift; sourceTree = "<group>"; };
 		08209C82257169DB00FE51F5 /* MobileShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08209C85257169DB00FE51F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +144,7 @@
 		0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsRemoteStore.swift; sourceTree = "<group>"; };
 		0878FF0925792DCC007E037E /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		0878FF0D25792DDB007E037E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
-		0878FF1125792E50007E037E /* PaymentComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentComposer.swift; sourceTree = "<group>"; };
+		0878FF1125792E50007E037E /* PaymentSceneComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneComposer.swift; sourceTree = "<group>"; };
 		0878FF1725792F73007E037E /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
 		0878FF29257948D6007E037E /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
 		0878FF30257979EA007E037E /* CartRemoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteServiceTests.swift; sourceTree = "<group>"; };
@@ -208,6 +214,47 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		080B868A29BF635D0083D0FA /* CompositionRoot */ = {
+			isa = PBXGroup;
+			children = (
+				080B868B29BF63910083D0FA /* AnalyticsDecorators */,
+			);
+			path = CompositionRoot;
+			sourceTree = "<group>";
+		};
+		080B868B29BF63910083D0FA /* AnalyticsDecorators */ = {
+			isa = PBXGroup;
+			children = (
+				080B868C29BF639A0083D0FA /* Payment */,
+			);
+			path = AnalyticsDecorators;
+			sourceTree = "<group>";
+		};
+		080B868C29BF639A0083D0FA /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		080B868F29BF71910083D0FA /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				080B869029BF71A20083D0FA /* UIKit */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		080B869029BF71A20083D0FA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				080B869129BF71B30083D0FA /* UIControl+Extensions.swift */,
+				080B869329BF71C70083D0FA /* UIButton+Extensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		08209C79257169DB00FE51F5 = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +289,7 @@
 			children = (
 				08209CC125716C6500FE51F5 /* Domain */,
 				08209CC225716C6B00FE51F5 /* Application */,
+				080B868F29BF71910083D0FA /* Infrastructure */,
 				08209C9E257169DF00FE51F5 /* Info.plist */,
 			);
 			path = MobileShopTests;
@@ -291,6 +339,7 @@
 		08209CC225716C6B00FE51F5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				080B868A29BF635D0083D0FA /* CompositionRoot */,
 				08CE88E9257806D600BEE7EF /* Cart */,
 				086BB776257E683E00249899 /* Payment */,
 				088C64BE265AA8410039D8BF /* Common */,
@@ -457,7 +506,7 @@
 				08209C87257169DB00FE51F5 /* SceneDelegate.swift */,
 				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
 				08209CD425716D5700FE51F5 /* CartComposer.swift */,
-				0878FF1125792E50007E037E /* PaymentComposer.swift */,
+				0878FF1125792E50007E037E /* PaymentSceneComposer.swift */,
 				080B868129BF4FB00083D0FA /* AnalyticsDecorators */,
 			);
 			path = CompositionRoot;
@@ -660,7 +709,7 @@
 				083B88C9257A84240073140C /* FacebookAnalyticsService.swift in Sources */,
 				080B868629BF51B40083D0FA /* PaymentService.swift in Sources */,
 				087AC890257666AB006FF4E6 /* CartRemoteStore.swift in Sources */,
-				0878FF1225792E50007E037E /* PaymentComposer.swift in Sources */,
+				0878FF1225792E50007E037E /* PaymentSceneComposer.swift in Sources */,
 				087AC880257663FF006FF4E6 /* Product.swift in Sources */,
 				087AC869257662E6006FF4E6 /* CartServicing.swift in Sources */,
 				0878FF2A257948D6007E037E /* PaymentCoordinator.swift in Sources */,
@@ -690,11 +739,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				086BB773257E61CA00249899 /* FacebookAnalyticsServiceStub.swift in Sources */,
+				080B869429BF71C70083D0FA /* UIButton+Extensions.swift in Sources */,
 				084AAA75257F924700DE7EE1 /* LocalizerStub.swift in Sources */,
+				080B868E29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift in Sources */,
 				086BB778257E685D00249899 /* PaymentPresenterTests.swift in Sources */,
 				084AAA83257FA1F800DE7EE1 /* LocalizerTests.swift in Sources */,
 				086BB76D257E60DB00249899 /* FirebaseAnalyticsServiceStub.swift in Sources */,
 				0878FF3D25798CBD007E037E /* CartPresenterTests.swift in Sources */,
+				080B869229BF71B30083D0FA /* UIControl+Extensions.swift in Sources */,
 				086BB77F257E6AA100249899 /* AlertingViewSpy.swift in Sources */,
 				083D8F612577D989006F9794 /* CartTests.swift in Sources */,
 				0878FF31257979EA007E037E /* CartRemoteServiceTests.swift in Sources */,

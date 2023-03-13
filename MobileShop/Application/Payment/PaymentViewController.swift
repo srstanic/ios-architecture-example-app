@@ -18,22 +18,22 @@ class PaymentViewController: UIViewController, PaymentView {
     func setAmountTitle(_ amountTitle: String) {
         amountTitleLabel.text = amountTitle
     }
-    @IBOutlet private weak var amountTitleLabel: UILabel!
+    @IBOutlet private(set) weak var amountTitleLabel: UILabel!
 
     func setChargeNote(_ chargeNote: String) {
         chargeNoteLabel.text = chargeNote
     }
-    @IBOutlet private weak var chargeNoteLabel: UILabel!
+    @IBOutlet private(set) weak var chargeNoteLabel: UILabel!
 
     func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String){
         confirmPurchaseButton.setTitle(confirmPurchaseButtonTitle, for: .normal)
     }
-    @IBOutlet private weak var confirmPurchaseButton: UIButton!
+    @IBOutlet private(set) weak var confirmPurchaseButton: UIButton!
 
     func showAmount(_ amount: String) {
         amountValueLabel.text = amount
     }
-    @IBOutlet private weak var amountValueLabel: UILabel!
+    @IBOutlet private(set) weak var amountValueLabel: UILabel!
 
     // MARK: Lifecycle
 
@@ -49,7 +49,7 @@ class PaymentViewController: UIViewController, PaymentView {
 
     // MARK: Actions
 
-    @IBAction func confirmPurchase(_ sender: Any) {
+    @IBAction private func confirmPurchase() {
         outputs?.onPurchaseConfirmed()
     }
 }
