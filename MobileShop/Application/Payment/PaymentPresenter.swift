@@ -26,17 +26,9 @@ protocol PaymentSceneOutputs {
     func onPurchaseCompleted()
 }
 
-// MARK: PaymentTracking
-
-protocol PaymentTracking: SceneTracking {
-    func onDidConfirmPurchase()
-    func onDidCompletePurchase(witAmount amount: Double)
-}
-
 final class PaymentPresenter: PaymentViewOutputs {
     struct Dependencies {
         let paymentService: PaymentService
-        let tracker: PaymentTracking
         let localizer: Localizing
     }
 
@@ -54,7 +46,6 @@ final class PaymentPresenter: PaymentViewOutputs {
     // MARK: PaymentViewOutputs
 
     func onPurchaseConfirmed() {
-        dependencies.tracker.onDidConfirmPurchase()
         dependencies.paymentService.processPayment(for: amount) { [weak self] result in
             switch result {
             case .success:
@@ -67,7 +58,6 @@ final class PaymentPresenter: PaymentViewOutputs {
     }
 
     private func onSuccessfulPayment() {
-        dependencies.tracker.onDidCompletePurchase(witAmount: amount)
         showSuccessfulPurchaseAlert() { [outputs] in
             outputs.onPurchaseCompleted()
         }
@@ -94,9 +84,7 @@ final class PaymentPresenter: PaymentViewOutputs {
 
     func onViewWillAppear() {}
 
-    func onViewDidAppear() {
-        dependencies.tracker.onDidVisitScene()
-    }
+    func onViewDidAppear() {}
 
     func onViewDidDisappear() {}
 }

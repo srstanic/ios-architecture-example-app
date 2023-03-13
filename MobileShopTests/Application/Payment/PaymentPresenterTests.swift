@@ -9,7 +9,6 @@ import XCTest
 @testable import MobileShop
 
 class PaymentPresenterTests: XCTestCase {
-    private var paymentTracker: PaymentTracking!
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!
     private var facebookAnalyticsServiceStub: FacebookAnalyticsServiceStub!
     private var localizerStub: LocalizerStub!
@@ -17,13 +16,7 @@ class PaymentPresenterTests: XCTestCase {
     private var paymentViewSpy: PaymentViewSpy!
     private var paymentServiceSpy: PaymentServiceSpy!
 
-    override func setUpWithError() throws {
-        firebaseAnalyticsServiceStub = FirebaseAnalyticsServiceStub()
-        facebookAnalyticsServiceStub = FacebookAnalyticsServiceStub()
-        paymentTracker = PaymentTracker(
-            firebaseAnalyticsService: firebaseAnalyticsServiceStub,
-            facebookAnalyticsService: facebookAnalyticsServiceStub
-        )
+    override func setUp() {
         localizerStub = LocalizerStub()
         paymentSceneOutputsSpy = PaymentSceneOutputsSpy()
         paymentViewSpy = PaymentViewSpy()
@@ -63,35 +56,11 @@ class PaymentPresenterTests: XCTestCase {
         XCTAssertEqual(paymentSceneOutputsSpy.onPurchaseCompletedCallCount, 1)
     }
 
-    func testTrackingVisit() {
-        let sut = buildSUT(forAmount: 0)
-
-        sut.onViewDidAppear()
-
-        XCTAssertEqual(firebaseAnalyticsServiceStub.recordedEvents, [.sceneVisitEvent("Payment")])
-    }
-
-    func testTrackingPurchaseConfirmationAndCompletion() {
-        let amount: Double = 10
-        let sut = buildSUT(forAmount: amount)
-
-        sut.onPurchaseConfirmed()
-        paymentServiceSpy.paymentSucceeded(at: 0)
-
-        XCTAssertEqual(
-            firebaseAnalyticsServiceStub.recordedEvents,
-            [.userActionEvent("Confirm Purchase"), .purchaseEvent(amount)]
-        )
-
-        XCTAssertEqual(facebookAnalyticsServiceStub.recordedEvents, [.purchaseEvent(amount)])
-    }
-
     private func buildSUT(forAmount amount: Double) -> PaymentPresenter {
         return PaymentPresenter(
             for: amount,
             dependencies: .init(
                 paymentService: paymentServiceSpy,
-                tracker: paymentTracker,
                 localizer: localizerStub
             ),
             outputs: paymentSceneOutputsSpy
@@ -142,6 +111,10 @@ final class PaymentServiceSpy: PaymentService {
 
     func paymentSucceeded(at index: Int) {
         processPaymentForCompletionReceivedArguments[index].1(.success(()))
+    }
+
+    func paymentFailed(at index: Int) {
+        processPaymentForCompletionReceivedArguments[index].1(.failure(NSError()))
     }
 }
 

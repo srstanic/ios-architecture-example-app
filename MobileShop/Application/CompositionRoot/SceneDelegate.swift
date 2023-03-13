@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         PaymentCoordinator(dependencies:
             .init(composer:
                 PaymentComposer(
+                    providePaymentService: NullPaymentService.init,
                     provideFirebaseAnalyticsServicing: FirebaseAnalyticsService.init,
                     provideFacebookAnalyticsServicing: FacebookAnalyticsService.init
                 )

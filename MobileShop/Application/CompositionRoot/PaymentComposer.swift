@@ -15,12 +15,16 @@ protocol PaymentComposing {
 }
 
 final class PaymentComposer: PaymentComposing {
+    private let providePaymentService: () -> PaymentService
     private let provideFirebaseAnalyticsServicing: () -> FirebaseAnalyticsServicing
     private let provideFacebookAnalyticsServicing: () -> FacebookAnalyticsServicing
+
     init(
+        providePaymentService: @escaping () -> PaymentService,
         provideFirebaseAnalyticsServicing: @escaping () -> FirebaseAnalyticsServicing,
         provideFacebookAnalyticsServicing: @escaping () -> FacebookAnalyticsServicing
     ) {
+        self.providePaymentService = providePaymentService
         self.provideFirebaseAnalyticsServicing = provideFirebaseAnalyticsServicing
         self.provideFacebookAnalyticsServicing = provideFacebookAnalyticsServicing
     }
@@ -31,22 +35,29 @@ final class PaymentComposer: PaymentComposing {
     ) -> UIViewController {
         let paymentViewController: PaymentViewController = .initFromStoryboard()
 
-        let paymentTracker = PaymentTracker(
-            firebaseAnalyticsService: provideFirebaseAnalyticsServicing(),
-            facebookAnalyticsService: provideFacebookAnalyticsServicing()
+        let firebaseAnalyticsService = provideFirebaseAnalyticsServicing()
+        let facebookAnalyticsService = provideFacebookAnalyticsServicing()
+        let paymentService = PaymentSceneAnalyticsDecorators.PaymentServiceDecorator(
+            decoratee: providePaymentService(),
+            firebaseAnalyticsService: firebaseAnalyticsService,
+            facebookAnalyticsService: facebookAnalyticsService
         )
         let localizer = NSLocalizer(forType: PaymentPresenter.self, tableName: "Payment")
         let presenter = PaymentPresenter(
             for: amount,
             dependencies: .init(
-                paymentService: NullPaymentService(),
-                tracker: paymentTracker,
+                paymentService: paymentService,
                 localizer: localizer
             ),
             outputs: outputs
         )
 
-        paymentViewController.outputs = presenter
+        let viewOutputs = PaymentSceneAnalyticsDecorators.PaymentViewOutputsDecorator(
+            decoratee: presenter,
+            firebaseAnalyticsService: firebaseAnalyticsService
+        )
+
+        paymentViewController.outputs = viewOutputs
         presenter.view = WeakReferenceProxy(paymentViewController)
 
         return paymentViewController

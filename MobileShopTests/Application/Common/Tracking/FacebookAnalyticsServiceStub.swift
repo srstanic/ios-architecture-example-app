@@ -22,4 +22,8 @@ class FacebookAnalyticsServiceStub: FacebookAnalyticsServicing {
         recordedEvents.append(FacebookRecordedEvent(event: event, parameters: parameters))
     }
     var recordedEvents: [FacebookRecordedEvent] = []
+
+    func containsRecordedEvent(_ event: FacebookRecordedEvent) -> Bool {
+        recordedEvents.contains(event)
+    }
 }

@@ -9,10 +9,12 @@ import XCTest
 @testable import MobileShop
 
 final class PaymentSceneAnalyticsTests: XCTestCase {
+    private var paymentServiceSpy: PaymentServiceSpy!
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!
     private var facebookAnalyticsServiceStub: FacebookAnalyticsServiceStub!
 
     override func setUp() {
+        paymentServiceSpy = PaymentServiceSpy()
         firebaseAnalyticsServiceStub = FirebaseAnalyticsServiceStub()
         facebookAnalyticsServiceStub = FacebookAnalyticsServiceStub()
     }
@@ -22,19 +24,47 @@ final class PaymentSceneAnalyticsTests: XCTestCase {
         let sut = buildSUT(forAmount: amount)
 
         sut.appearedOnScreen()
+
+        XCTAssertTrue(firebaseAnalyticsServiceStub.containsRecordedEvent(.sceneVisitEvent("Payment")))
+    }
+
+    func testConfirmPaymentUserActionEventTracked() {
+        let amount: Double = 12.99
+        let sut = buildSUT(forAmount: amount)
+
+        sut.appearedOnScreen()
         sut.onPurchaseConfirmed()
 
-        XCTAssertEqual(firebaseAnalyticsServiceStub.recordedEvents, [
-            .sceneVisitEvent("Payment"),
-            .userActionEvent("Confirm Purchase"),
-            .purchaseEvent(amount)
-        ])
-        XCTAssertEqual(facebookAnalyticsServiceStub.recordedEvents, [.purchaseEvent(amount)])
+        XCTAssertTrue(firebaseAnalyticsServiceStub.containsRecordedEvent(.userActionEvent("Confirm Purchase")))
+    }
+
+    func testPurchaseEventTrackedWhenPaymentSuccessful() {
+        let amount: Double = 12.99
+        let sut = buildSUT(forAmount: amount)
+
+        sut.appearedOnScreen()
+        sut.onPurchaseConfirmed()
+        paymentServiceSpy.paymentSucceeded(at: 0)
+
+        XCTAssertTrue(firebaseAnalyticsServiceStub.containsRecordedEvent(.purchaseEvent(amount)))
+        XCTAssertTrue(facebookAnalyticsServiceStub.containsRecordedEvent(.purchaseEvent(amount)))
+    }
+
+    func testPurchaseEventTrackedWhenPaymentFailed() {
+        let amount: Double = 12.99
+        let sut = buildSUT(forAmount: amount)
+
+        sut.appearedOnScreen()
+        sut.onPurchaseConfirmed()
+        paymentServiceSpy.paymentFailed(at: 0)
+
+        XCTAssertFalse(firebaseAnalyticsServiceStub.containsRecordedEvent(.purchaseEvent(amount)))
+        XCTAssertFalse(facebookAnalyticsServiceStub.containsRecordedEvent(.purchaseEvent(amount)))
     }
 
     private func buildSUT(forAmount amount: Double) -> PaymentViewOutputs {
         let paymentComposer = PaymentComposer(
-            provideFirebaseAnalyticsServicing: { [unowned self] in self.firebaseAnalyticsServiceStub },
+            providePaymentService: { [unowned self] in self.paymentServiceSpy }, provideFirebaseAnalyticsServicing: { [unowned self] in self.firebaseAnalyticsServiceStub },
             provideFacebookAnalyticsServicing: { [unowned self] in self.facebookAnalyticsServiceStub }
         )
         let paymentScene = paymentComposer

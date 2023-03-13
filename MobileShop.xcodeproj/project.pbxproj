@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		080B868629BF51B40083D0FA /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868529BF51B40083D0FA /* PaymentService.swift */; };
 		080B868829BF525E0083D0FA /* NullPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868729BF525E0083D0FA /* NullPaymentService.swift */; };
-		080B868929BF5F730083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868329BF4FF10083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift */; };
+		080B868929BF5F730083D0FA /* PaymentSceneAnalyticsDecorators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868329BF4FF10083D0FA /* PaymentSceneAnalyticsDecorators.swift */; };
 		080B868E29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */; };
 		080B869229BF71B30083D0FA /* UIControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869129BF71B30083D0FA /* UIControl+Extensions.swift */; };
 		080B869429BF71C70083D0FA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080B869329BF71C70083D0FA /* UIButton+Extensions.swift */; };
@@ -24,7 +24,6 @@
 		08209CEA25716F1E00FE51F5 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08209CE925716F1E00FE51F5 /* UIViewController+Extensions.swift */; };
 		0839E6A2257A7B05006FB959 /* PaymentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839E6A1257A7B05006FB959 /* PaymentPresenter.swift */; };
 		0839E6A7257A7B9A006FB959 /* ViewOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839E6A6257A7B9A006FB959 /* ViewOutputs.swift */; };
-		0839E6AD257A7CB1006FB959 /* PaymentTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0839E6AC257A7CB1006FB959 /* PaymentTracker.swift */; };
 		083B88C9257A84240073140C /* FacebookAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B88C8257A84240073140C /* FacebookAnalyticsService.swift */; };
 		083B88CD257A87720073140C /* CompositeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B88CC257A87720073140C /* CompositeTracker.swift */; };
 		083B88D3257ACED20073140C /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083B88D2257ACED20073140C /* UIAlertController+Extensions.swift */; };
@@ -97,7 +96,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		080B868329BF4FF10083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewOutputsAnalyticsDecorator.swift; sourceTree = "<group>"; };
+		080B868329BF4FF10083D0FA /* PaymentSceneAnalyticsDecorators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneAnalyticsDecorators.swift; sourceTree = "<group>"; };
 		080B868529BF51B40083D0FA /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		080B868729BF525E0083D0FA /* NullPaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullPaymentService.swift; sourceTree = "<group>"; };
 		080B868D29BF63E50083D0FA /* PaymentSceneAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneAnalyticsTests.swift; sourceTree = "<group>"; };
@@ -118,7 +117,6 @@
 		08209CE925716F1E00FE51F5 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0839E6A1257A7B05006FB959 /* PaymentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPresenter.swift; sourceTree = "<group>"; };
 		0839E6A6257A7B9A006FB959 /* ViewOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutputs.swift; sourceTree = "<group>"; };
-		0839E6AC257A7CB1006FB959 /* PaymentTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTracker.swift; sourceTree = "<group>"; };
 		083B88C8257A84240073140C /* FacebookAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAnalyticsService.swift; sourceTree = "<group>"; };
 		083B88CC257A87720073140C /* CompositeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeTracker.swift; sourceTree = "<group>"; };
 		083B88D2257ACED20073140C /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
@@ -209,7 +207,7 @@
 		080B868229BF4FD10083D0FA /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				080B868329BF4FF10083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift */,
+				080B868329BF4FF10083D0FA /* PaymentSceneAnalyticsDecorators.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -402,7 +400,6 @@
 				0878FF0D25792DDB007E037E /* Payment.storyboard */,
 				0878FF0925792DCC007E037E /* PaymentViewController.swift */,
 				0839E6A1257A7B05006FB959 /* PaymentPresenter.swift */,
-				0839E6AC257A7CB1006FB959 /* PaymentTracker.swift */,
 				0878FF29257948D6007E037E /* PaymentCoordinator.swift */,
 				0888AC1C29BBE1FF00E0E9F4 /* Payment.strings */,
 				080B868529BF51B40083D0FA /* PaymentService.swift */,
@@ -682,7 +679,7 @@
 				0878FF4125799652007E037E /* CartTracker.swift in Sources */,
 				0888AC0F29BA37AF00E0E9F4 /* WeakReferenceProxy.swift in Sources */,
 				0839E6A7257A7B9A006FB959 /* ViewOutputs.swift in Sources */,
-				080B868929BF5F730083D0FA /* PaymentViewOutputsAnalyticsDecorator.swift in Sources */,
+				080B868929BF5F730083D0FA /* PaymentSceneAnalyticsDecorators.swift in Sources */,
 				0878FF0025792B0C007E037E /* DiscountsRemoteStore.swift in Sources */,
 				08FF955625812BDE0095A408 /* FacebookTracker.swift in Sources */,
 				08209CCA25716CFA00FE51F5 /* AppCoordinator.swift in Sources */,
@@ -716,7 +713,6 @@
 				087AC86425765A49006FF4E6 /* UIScreen+Extensions.swift in Sources */,
 				08137858257A626300FFE4AE /* CartRemoteService.swift in Sources */,
 				08209C86257169DB00FE51F5 /* AppDelegate.swift in Sources */,
-				0839E6AD257A7CB1006FB959 /* PaymentTracker.swift in Sources */,
 				08209C88257169DB00FE51F5 /* SceneDelegate.swift in Sources */,
 				0888AC1E29BBEB4000E0E9F4 /* Localizing.swift in Sources */,
 				084AAA91257FF55100DE7EE1 /* LoadableTableViewController.swift in Sources */,

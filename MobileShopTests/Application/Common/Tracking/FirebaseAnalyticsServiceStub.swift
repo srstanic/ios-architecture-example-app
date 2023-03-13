@@ -32,4 +32,7 @@ class FirebaseAnalyticsServiceStub: FirebaseAnalyticsServicing {
     var recordedEvents: [FirebaseRecordedEvent] = []
 
 
+    func containsRecordedEvent(_ event: FirebaseRecordedEvent) -> Bool {
+        recordedEvents.contains(event)
+    }
 }
