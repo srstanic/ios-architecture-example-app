@@ -35,6 +35,7 @@ protocol PaymentTracking: SceneTracking {
 
 final class PaymentPresenter: PaymentViewOutputs {
     struct Dependencies {
+        let paymentService: PaymentService
         let tracker: PaymentTracking
         let localizer: Localizing
     }
@@ -54,9 +55,18 @@ final class PaymentPresenter: PaymentViewOutputs {
 
     func onPurchaseConfirmed() {
         dependencies.tracker.onDidConfirmPurchase()
-        // If this was a real app, there would be some transaction processing logic here
-        // but since this is just an example, we'll assume the transaction went through
-        // and show a success message.
+        dependencies.paymentService.processPayment(for: amount) { [weak self] result in
+            switch result {
+            case .success:
+                self?.onSuccessfulPayment()
+            case .failure:
+                // TODO
+                break
+            }
+        }
+    }
+
+    private func onSuccessfulPayment() {
         dependencies.tracker.onDidCompletePurchase(witAmount: amount)
         showSuccessfulPurchaseAlert() { [outputs] in
             outputs.onPurchaseCompleted()

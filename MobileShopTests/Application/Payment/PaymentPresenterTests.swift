@@ -15,6 +15,7 @@ class PaymentPresenterTests: XCTestCase {
     private var localizerStub: LocalizerStub!
     private var paymentSceneOutputsSpy: PaymentSceneOutputsSpy!
     private var paymentViewSpy: PaymentViewSpy!
+    private var paymentServiceSpy: PaymentServiceSpy!
 
     override func setUpWithError() throws {
         firebaseAnalyticsServiceStub = FirebaseAnalyticsServiceStub()
@@ -26,6 +27,7 @@ class PaymentPresenterTests: XCTestCase {
         localizerStub = LocalizerStub()
         paymentSceneOutputsSpy = PaymentSceneOutputsSpy()
         paymentViewSpy = PaymentViewSpy()
+        paymentServiceSpy = PaymentServiceSpy()
     }
 
     func testAmountShownOnLoad() {
@@ -41,11 +43,12 @@ class PaymentPresenterTests: XCTestCase {
         XCTAssertEqual(paymentViewSpy.recodedConfirmPurchaseButtonTitles, [localized("PAYMENT_SCENE_CONFIRM_PURCHASE_BUTTON_TITLE")])
     }
 
-    func testDidConfirmPayment() {
+    func testDidConfirmPaymentAndPaymentSucceeded() {
         let sut = buildSUT(forAmount: 0)
         sut.view = paymentViewSpy
 
         sut.onPurchaseConfirmed()
+        paymentServiceSpy.paymentSucceeded(at: 0)
 
         let expectedAlertContent = RecordedAlertContent(
             title: localized("PAYMENT_SUCCESS_ALERT_TITLE"),
@@ -73,6 +76,7 @@ class PaymentPresenterTests: XCTestCase {
         let sut = buildSUT(forAmount: amount)
 
         sut.onPurchaseConfirmed()
+        paymentServiceSpy.paymentSucceeded(at: 0)
 
         XCTAssertEqual(
             firebaseAnalyticsServiceStub.recordedEvents,
@@ -86,6 +90,7 @@ class PaymentPresenterTests: XCTestCase {
         return PaymentPresenter(
             for: amount,
             dependencies: .init(
+                paymentService: paymentServiceSpy,
                 tracker: paymentTracker,
                 localizer: localizerStub
             ),
@@ -127,3 +132,16 @@ final class PaymentViewSpy: AlertingViewStub, PaymentView {
     }
     var recordedAmountsShown: [String] = []
 }
+
+final class PaymentServiceSpy: PaymentService {
+    var processPaymentForCompletionReceivedArguments: [(amount: Double, completion: (Result<Void, Error>) -> Void)] = []
+
+    func processPayment(for amount: Double, completion: @escaping (Result<Void, Error>) -> Void) {
+        processPaymentForCompletionReceivedArguments.append((amount: amount, completion: completion))
+    }
+
+    func paymentSucceeded(at index: Int) {
+        processPaymentForCompletionReceivedArguments[index].1(.success(()))
+    }
+}
+

@@ -30,6 +30,7 @@ final class PaymentComposer: PaymentComposing {
         let presenter = PaymentPresenter(
             for: amount,
             dependencies: .init(
+                paymentService: NullPaymentService(),
                 tracker: paymentTracker,
                 localizer: localizer
             ),
