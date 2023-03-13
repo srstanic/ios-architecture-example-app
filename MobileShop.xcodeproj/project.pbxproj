@@ -50,7 +50,7 @@
 		0878FF0025792B0C007E037E /* DiscountsRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */; };
 		0878FF0A25792DCC007E037E /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF0925792DCC007E037E /* PaymentViewController.swift */; };
 		0878FF0E25792DDB007E037E /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0878FF0D25792DDB007E037E /* Payment.storyboard */; };
-		0878FF1225792E50007E037E /* PaymentSceneComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF1125792E50007E037E /* PaymentSceneComposer.swift */; };
+		0878FF1225792E50007E037E /* PaymentComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF1125792E50007E037E /* PaymentComposer.swift */; };
 		0878FF1825792F73007E037E /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF1725792F73007E037E /* CartCoordinator.swift */; };
 		0878FF2A257948D6007E037E /* PaymentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF29257948D6007E037E /* PaymentCoordinator.swift */; };
 		0878FF31257979EA007E037E /* CartRemoteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878FF30257979EA007E037E /* CartRemoteServiceTests.swift */; };
@@ -144,7 +144,7 @@
 		0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsRemoteStore.swift; sourceTree = "<group>"; };
 		0878FF0925792DCC007E037E /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		0878FF0D25792DDB007E037E /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
-		0878FF1125792E50007E037E /* PaymentSceneComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneComposer.swift; sourceTree = "<group>"; };
+		0878FF1125792E50007E037E /* PaymentComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentComposer.swift; sourceTree = "<group>"; };
 		0878FF1725792F73007E037E /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
 		0878FF29257948D6007E037E /* PaymentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCoordinator.swift; sourceTree = "<group>"; };
 		0878FF30257979EA007E037E /* CartRemoteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRemoteServiceTests.swift; sourceTree = "<group>"; };
@@ -506,7 +506,7 @@
 				08209C87257169DB00FE51F5 /* SceneDelegate.swift */,
 				08209CC925716CFA00FE51F5 /* AppCoordinator.swift */,
 				08209CD425716D5700FE51F5 /* CartComposer.swift */,
-				0878FF1125792E50007E037E /* PaymentSceneComposer.swift */,
+				0878FF1125792E50007E037E /* PaymentComposer.swift */,
 				080B868129BF4FB00083D0FA /* AnalyticsDecorators */,
 			);
 			path = CompositionRoot;
@@ -709,7 +709,7 @@
 				083B88C9257A84240073140C /* FacebookAnalyticsService.swift in Sources */,
 				080B868629BF51B40083D0FA /* PaymentService.swift in Sources */,
 				087AC890257666AB006FF4E6 /* CartRemoteStore.swift in Sources */,
-				0878FF1225792E50007E037E /* PaymentSceneComposer.swift in Sources */,
+				0878FF1225792E50007E037E /* PaymentComposer.swift in Sources */,
 				087AC880257663FF006FF4E6 /* Product.swift in Sources */,
 				087AC869257662E6006FF4E6 /* CartServicing.swift in Sources */,
 				0878FF2A257948D6007E037E /* PaymentCoordinator.swift in Sources */,

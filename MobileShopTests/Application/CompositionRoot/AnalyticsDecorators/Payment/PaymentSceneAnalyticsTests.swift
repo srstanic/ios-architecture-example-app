@@ -21,8 +21,8 @@ final class PaymentSceneAnalyticsTests: XCTestCase {
         let amount: Double = 12.99
         let sut = buildSUT(forAmount: amount)
 
-        sut.appearOnScreen()
-        sut.tapOnPayButton()
+        sut.appearedOnScreen()
+        sut.onPurchaseConfirmed()
 
         XCTAssertEqual(firebaseAnalyticsServiceStub.recordedEvents, [
             .sceneVisitEvent("Payment"),
@@ -32,14 +32,14 @@ final class PaymentSceneAnalyticsTests: XCTestCase {
         XCTAssertEqual(facebookAnalyticsServiceStub.recordedEvents, [.purchaseEvent(amount)])
     }
 
-    private func buildSUT(forAmount amount: Double) -> PaymentViewController {
-        let paymentComposer = PaymentSceneComposer(
+    private func buildSUT(forAmount amount: Double) -> PaymentViewOutputs {
+        let paymentComposer = PaymentComposer(
             provideFirebaseAnalyticsServicing: { [unowned self] in self.firebaseAnalyticsServiceStub },
             provideFacebookAnalyticsServicing: { [unowned self] in self.facebookAnalyticsServiceStub }
         )
         let paymentScene = paymentComposer
             .composePaymentScene(for: amount, with: PaymentSceneOutputsStub()) as! PaymentViewController
-        return paymentScene
+        return paymentScene.outputs!
     }
 }
 
@@ -47,14 +47,9 @@ private final class PaymentSceneOutputsStub: PaymentSceneOutputs {
     func onPurchaseCompleted() {}
 }
 
-private extension PaymentViewController {
-    func appearOnScreen() {
-        loadViewIfNeeded()
-        viewWillAppear(false)
-        viewDidAppear(false)
-    }
-
-    func tapOnPayButton() {
-        confirmPurchaseButton.simulateTap()
+private extension PaymentViewOutputs {
+    func appearedOnScreen() {
+        onViewWillAppear()
+        onViewDidAppear()
     }
 }
