@@ -9,14 +9,14 @@ import XCTest
 @testable import MobileShop
 
 class CartPresenterTests: XCTestCase {
-    private var cartServiceStub: CartServiceStub!
+    private var cartLoaderStub: CartLoaderStub!
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!
     private var localizerStub: LocalizerStub!
     private var cartSceneOutputsSpy: CartSceneOutputsSpy!
     private var cartViewSpy: CartViewSpy!
 
     override func setUpWithError() throws {
-        cartServiceStub = CartServiceStub()
+        cartLoaderStub = CartLoaderStub()
         firebaseAnalyticsServiceStub = FirebaseAnalyticsServiceStub()
         localizerStub = LocalizerStub()
         cartSceneOutputsSpy = CartSceneOutputsSpy()
@@ -40,7 +40,7 @@ class CartPresenterTests: XCTestCase {
     }()
 
     func testCartShownOnLoad() {
-        cartServiceStub.result = .success(cart)
+        cartLoaderStub.result = .success(cart)
 
         let sut = buildSUT()
         sut.view = cartViewSpy
@@ -75,7 +75,7 @@ class CartPresenterTests: XCTestCase {
     }
 
     func testCartErrorOnLoad() {
-        cartServiceStub.result = .failure(CartServiceError.failedToLoadCartData)
+        cartLoaderStub.result = .failure(CartLoadingError.failedToLoadCartData)
 
         let sut = buildSUT()
         sut.view = cartViewSpy
@@ -98,7 +98,7 @@ class CartPresenterTests: XCTestCase {
 
         // let's retry
 
-        cartServiceStub.result = .success(cart)
+        cartLoaderStub.result = .success(cart)
         cartViewSpy.recordedOnDismissHandlers.first!?()
 
         XCTAssertEqual(cartViewSpy.recordedLoadingIndicatorHidden, [false, true, false, true])
@@ -106,7 +106,7 @@ class CartPresenterTests: XCTestCase {
     }
 
     func testDidChooseToPay() {
-        cartServiceStub.result = .success(cart)
+        cartLoaderStub.result = .success(cart)
 
         let sut = buildSUT()
 
@@ -119,7 +119,7 @@ class CartPresenterTests: XCTestCase {
     private func buildSUT() -> CartPresenter {
         return CartPresenter(
             dependencies: .init(
-                cartService: cartServiceStub,
+                cartLoader: cartLoaderStub,
                 localizer: localizerStub
             ),
             outputs: cartSceneOutputsSpy
@@ -127,8 +127,8 @@ class CartPresenterTests: XCTestCase {
     }
 }
 
-final class CartServiceStub: CartServicing {
-    func getCart(completion: @escaping CartResultHandler) {
+final class CartLoaderStub: CartLoading {
+    func loadCart(completion: @escaping CartResultHandler) {
         if let result = self.result {
             completion(result)
         }

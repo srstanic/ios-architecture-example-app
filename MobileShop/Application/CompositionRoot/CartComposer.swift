@@ -12,22 +12,22 @@ protocol CartComposing {
 }
 
 final class CartComposer: CartComposing {
-    private let provideFirebaseAnalyticsServicing: () -> FirebaseAnalyticsServicing
+    private let provideFirebaseAnalyticsService: () -> FirebaseAnalyticsService
 
-    init(provideFirebaseAnalyticsServicing: @escaping () -> FirebaseAnalyticsServicing) {
-        self.provideFirebaseAnalyticsServicing = provideFirebaseAnalyticsServicing
+    init(provideFirebaseAnalyticsService: @escaping () -> FirebaseAnalyticsService) {
+        self.provideFirebaseAnalyticsService = provideFirebaseAnalyticsService
     }
 
     func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController {
         let cartViewController: CartViewController = .initFromStoryboard()
 
         let mobileShopApiClient = URLSessionMobileShopAPIClient.development()
-        let cartService = CartRemoteService(apiClient: mobileShopApiClient)
+        let cartLoader = CartRemoteService(apiClient: mobileShopApiClient)
 
         let localizer = NSLocalizer(forType: CartPresenter.self, tableName: "Cart")
 
         let presenterDependencies = CartPresenter.Dependencies(
-            cartService: cartService,
+            cartLoader: cartLoader,
             localizer: localizer
         )
 
@@ -35,7 +35,7 @@ final class CartComposer: CartComposing {
 
         let viewOutputs = CartSceneAnalyticsDecorators.CartViewOutputsDecorator(
             decoratee: presenter,
-            firebaseAnalyticsService: provideFirebaseAnalyticsServicing()
+            firebaseAnalyticsService: provideFirebaseAnalyticsService()
         )
         
         cartViewController.outputs = viewOutputs

@@ -8,11 +8,11 @@
 import Foundation
 import FirebaseAnalytics
 
-protocol FirebaseAnalyticsServicing {
+protocol FirebaseAnalyticsService {
     func logEvent(_ event: String, parameters: [String: NSObject]?)
 }
 
-extension FirebaseAnalyticsServicing {
+extension FirebaseAnalyticsService {
     func logSceneVisit(titled sceneTitle: String) {
         logEvent("scene_visit", parameters: ["title": sceneTitle as NSObject])
     }
@@ -26,7 +26,7 @@ extension FirebaseAnalyticsServicing {
     }
 }
 
-class FirebaseAnalyticsService: FirebaseAnalyticsServicing {
+final class FirebaseAnalyticsAdapter: FirebaseAnalyticsService {
     func logEvent(_ event: String, parameters: [String: NSObject]?) {
         Analytics.logEvent(event, parameters: parameters)
     }

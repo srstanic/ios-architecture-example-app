@@ -15,7 +15,7 @@ final class CartSceneAnalyticsDecorators {
 
         init(
             decoratee: CartViewOutputs,
-            firebaseAnalyticsService: FirebaseAnalyticsServicing
+            firebaseAnalyticsService: FirebaseAnalyticsService
         ) {
             self.decoratee = decoratee
             super.init(firebaseAnalyticsService: firebaseAnalyticsService)

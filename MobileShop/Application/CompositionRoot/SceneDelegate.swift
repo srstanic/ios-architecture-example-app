@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         CartCoordinator(
             dependencies: .init(
                 composer: CartComposer(
-                    provideFirebaseAnalyticsServicing: FirebaseAnalyticsService.init
+                    provideFirebaseAnalyticsService: FirebaseAnalyticsAdapter.init
                 ),
                 paymentCoordinator: createPaymentCoordinator()
             )
@@ -43,8 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .init(composer:
                 PaymentComposer(
                     providePaymentService: NullPaymentService.init,
-                    provideFirebaseAnalyticsServicing: FirebaseAnalyticsService.init,
-                    provideFacebookAnalyticsServicing: FacebookAnalyticsService.init
+                    provideFirebaseAnalyticsService: FirebaseAnalyticsAdapter.init,
+                    provideFacebookAnalyticsService: FacebookAppEventsAdapter.init
                 )
             )
         )

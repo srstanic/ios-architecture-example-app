@@ -12,7 +12,7 @@ class CartRemoteServiceTests: XCTestCase {
     func testGetCart() throws {
         let sut = buildSUT()
         let cartResultExpectation = expectation(description: "Cart result received")
-        sut.getCart { result in
+        sut.loadCart { result in
             if case let .success(cart) = result {
                 XCTAssertEqual(cart.id, Self.remoteStoreCart.id)
                 XCTAssertEqual(cart.products.map(\.quantity), Self.remoteStoreCart.productItems.map(\.quantity))

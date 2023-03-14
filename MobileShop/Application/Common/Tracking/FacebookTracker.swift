@@ -8,9 +8,9 @@
 import Foundation
 
 class FacebookTracker {
-    init(facebookAnalyticsService: FacebookAnalyticsServicing) {
+    init(facebookAnalyticsService: FacebookAnalyticsService) {
         self.facebookAnalyticsService = facebookAnalyticsService
 
     }
-    let facebookAnalyticsService: FacebookAnalyticsServicing
+    let facebookAnalyticsService: FacebookAnalyticsService
 }

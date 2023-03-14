@@ -49,7 +49,7 @@ protocol CartSceneOutputs {
 
 final class CartPresenter: CartViewOutputs {
     struct Dependencies {
-        let cartService: CartServicing
+        let cartLoader: CartLoading
         let localizer: Localizing
     }
 
@@ -73,7 +73,7 @@ final class CartPresenter: CartViewOutputs {
 
     private func loadAndShowCart() {
         view?.setLoadingIndicatorVisibility(isHidden: false)
-        dependencies.cartService.getCart { [weak self] cartResult in
+        dependencies.cartLoader.loadCart { [weak self] cartResult in
             guard let self = self else {
                 return
             }

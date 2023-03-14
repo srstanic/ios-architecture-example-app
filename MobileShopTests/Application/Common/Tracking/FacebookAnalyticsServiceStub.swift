@@ -17,7 +17,7 @@ struct FacebookRecordedEvent: Equatable {
     }
 }
 
-class FacebookAnalyticsServiceStub: FacebookAnalyticsServicing {
+class FacebookAnalyticsServiceStub: FacebookAnalyticsService {
     func logEvent(_ event: String, parameters: [String : NSObject]?) {
         recordedEvents.append(FacebookRecordedEvent(event: event, parameters: parameters))
     }

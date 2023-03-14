@@ -34,7 +34,7 @@ final class CartSceneAnalyticsTests: XCTestCase {
 
     private func buildSUT() -> CartViewOutputs {
         let cartComposer = CartComposer(
-            provideFirebaseAnalyticsServicing: { [unowned self] in self.firebaseAnalyticsServiceStub }
+            provideFirebaseAnalyticsService: { [unowned self] in self.firebaseAnalyticsServiceStub }
         )
         let cartScene = cartComposer
             .composeCartScene(with: CartSceneOutputsStub()) as! CartViewController

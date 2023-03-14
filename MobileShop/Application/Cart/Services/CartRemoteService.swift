@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CartRemoteService: CartServicing {
+final class CartRemoteService: CartLoading {
     init(apiClient: MobileShopAPIClient) {
         cartStore = CartRemoteStore(apiClient: apiClient)
         productsStore = ProductsRemoteStore(apiClient: apiClient)
@@ -17,7 +17,7 @@ final class CartRemoteService: CartServicing {
     private let productsStore: ProductsRemoteStore
     private let discountsStore: DiscountsRemoteStore
 
-    func getCart(completion: @escaping CartResultHandler) {
+    func loadCart(completion: @escaping CartResultHandler) {
         let completionOnMainThread: CartResultHandler = { result in
             DispatchQueue.main.async {
                 completion(result)
@@ -29,7 +29,7 @@ final class CartRemoteService: CartServicing {
                     self?.getProductsAndDiscounts(for: remoteStoreCart, completion: completionOnMainThread)
                 case .failure(_):
                     // for simplicity just return a generic service error
-                    completionOnMainThread(.failure(CartServiceError.failedToLoadCartData))
+                    completionOnMainThread(.failure(CartLoadingError.failedToLoadCartData))
             }
         }
     }
@@ -49,12 +49,12 @@ final class CartRemoteService: CartServicing {
                                 completion(.success(cart))
                             case .failure(_):
                                 // for simplicity just return a generic service error
-                                completion(.failure(CartServiceError.failedToLoadCartData))
+                                completion(.failure(CartLoadingError.failedToLoadCartData))
                         }
                     }
                 case .failure(_):
                     // for simplicity just return a generic service error
-                    completion(.failure(CartServiceError.failedToLoadCartData))
+                    completion(.failure(CartLoadingError.failedToLoadCartData))
             }
         }
     }

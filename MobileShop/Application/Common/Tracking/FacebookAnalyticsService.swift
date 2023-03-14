@@ -8,17 +8,17 @@
 import Foundation
 import FBSDKCoreKit
 
-protocol FacebookAnalyticsServicing {
+protocol FacebookAnalyticsService {
     func logEvent(_ event: String, parameters: [String: NSObject]?)
 }
 
-extension FacebookAnalyticsServicing {
+extension FacebookAnalyticsService {
     func logPurchase(withAmount amount: Double) {
         logEvent("purchase", parameters: ["amount": NSNumber(value: amount)])
     }
 }
 
-class FacebookAnalyticsService: FacebookAnalyticsServicing {
+final class FacebookAppEventsAdapter: FacebookAnalyticsService {
     func logEvent(_ event: String, parameters: [String : NSObject]?) {
         AppEvents.logEvent(.init(rawValue: event), parameters: parameters ?? [:])
     }

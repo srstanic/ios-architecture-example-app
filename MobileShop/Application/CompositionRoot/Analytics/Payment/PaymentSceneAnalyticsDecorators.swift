@@ -15,7 +15,7 @@ final class PaymentSceneAnalyticsDecorators {
 
         init(
             decoratee: PaymentViewOutputs,
-            firebaseAnalyticsService: FirebaseAnalyticsServicing
+            firebaseAnalyticsService: FirebaseAnalyticsService
         ) {
             self.decoratee = decoratee
             super.init(firebaseAnalyticsService: firebaseAnalyticsService)
@@ -49,8 +49,8 @@ final class PaymentSceneAnalyticsDecorators {
 
         init(
             decoratee: PaymentService,
-            firebaseAnalyticsService: FirebaseAnalyticsServicing,
-            facebookAnalyticsService: FacebookAnalyticsServicing
+            firebaseAnalyticsService: FirebaseAnalyticsService,
+            facebookAnalyticsService: FacebookAnalyticsService
         ) {
             self.decoratee = decoratee
             super.init(

@@ -64,8 +64,8 @@ final class PaymentSceneAnalyticsTests: XCTestCase {
 
     private func buildSUT(forAmount amount: Double) -> PaymentViewOutputs {
         let paymentComposer = PaymentComposer(
-            providePaymentService: { [unowned self] in self.paymentServiceSpy }, provideFirebaseAnalyticsServicing: { [unowned self] in self.firebaseAnalyticsServiceStub },
-            provideFacebookAnalyticsServicing: { [unowned self] in self.facebookAnalyticsServiceStub }
+            providePaymentService: { [unowned self] in self.paymentServiceSpy }, provideFirebaseAnalyticsService: { [unowned self] in self.firebaseAnalyticsServiceStub },
+            provideFacebookAnalyticsService: { [unowned self] in self.facebookAnalyticsServiceStub }
         )
         let paymentScene = paymentComposer
             .composePaymentScene(for: amount, with: PaymentSceneOutputsStub()) as! PaymentViewController

@@ -9,12 +9,12 @@ import Foundation
 
 class CompositeTracker {
     init(
-        firebaseAnalyticsService: FirebaseAnalyticsServicing,
-        facebookAnalyticsService: FacebookAnalyticsServicing
+        firebaseAnalyticsService: FirebaseAnalyticsService,
+        facebookAnalyticsService: FacebookAnalyticsService
     ) {
         self.firebaseAnalyticsService = firebaseAnalyticsService
         self.facebookAnalyticsService = facebookAnalyticsService
     }
-    let firebaseAnalyticsService: FirebaseAnalyticsServicing
-    let facebookAnalyticsService: FacebookAnalyticsServicing
+    let firebaseAnalyticsService: FirebaseAnalyticsService
+    let facebookAnalyticsService: FacebookAnalyticsService
 }

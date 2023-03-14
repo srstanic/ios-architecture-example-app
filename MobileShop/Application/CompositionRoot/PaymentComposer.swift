@@ -16,17 +16,17 @@ protocol PaymentComposing {
 
 final class PaymentComposer: PaymentComposing {
     private let providePaymentService: () -> PaymentService
-    private let provideFirebaseAnalyticsServicing: () -> FirebaseAnalyticsServicing
-    private let provideFacebookAnalyticsServicing: () -> FacebookAnalyticsServicing
+    private let provideFirebaseAnalyticsService: () -> FirebaseAnalyticsService
+    private let provideFacebookAnalyticsService: () -> FacebookAnalyticsService
 
     init(
         providePaymentService: @escaping () -> PaymentService,
-        provideFirebaseAnalyticsServicing: @escaping () -> FirebaseAnalyticsServicing,
-        provideFacebookAnalyticsServicing: @escaping () -> FacebookAnalyticsServicing
+        provideFirebaseAnalyticsService: @escaping () -> FirebaseAnalyticsService,
+        provideFacebookAnalyticsService: @escaping () -> FacebookAnalyticsService
     ) {
         self.providePaymentService = providePaymentService
-        self.provideFirebaseAnalyticsServicing = provideFirebaseAnalyticsServicing
-        self.provideFacebookAnalyticsServicing = provideFacebookAnalyticsServicing
+        self.provideFirebaseAnalyticsService = provideFirebaseAnalyticsService
+        self.provideFacebookAnalyticsService = provideFacebookAnalyticsService
     }
 
     func composePaymentScene(
@@ -35,8 +35,8 @@ final class PaymentComposer: PaymentComposing {
     ) -> UIViewController {
         let paymentViewController: PaymentViewController = .initFromStoryboard()
 
-        let firebaseAnalyticsService = provideFirebaseAnalyticsServicing()
-        let facebookAnalyticsService = provideFacebookAnalyticsServicing()
+        let firebaseAnalyticsService = provideFirebaseAnalyticsService()
+        let facebookAnalyticsService = provideFacebookAnalyticsService()
         let paymentService = PaymentSceneAnalyticsDecorators.PaymentServiceDecorator(
             decoratee: providePaymentService(),
             firebaseAnalyticsService: firebaseAnalyticsService,

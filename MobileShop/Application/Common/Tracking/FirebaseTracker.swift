@@ -8,9 +8,9 @@
 import Foundation
 
 class FirebaseTracker {
-    init(firebaseAnalyticsService: FirebaseAnalyticsServicing) {
+    init(firebaseAnalyticsService: FirebaseAnalyticsService) {
         self.firebaseAnalyticsService = firebaseAnalyticsService
 
     }
-    let firebaseAnalyticsService: FirebaseAnalyticsServicing
+    let firebaseAnalyticsService: FirebaseAnalyticsService
 }

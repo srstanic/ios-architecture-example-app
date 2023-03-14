@@ -25,7 +25,7 @@ struct FirebaseRecordedEvent: Equatable {
     }
 }
 
-class FirebaseAnalyticsServiceStub: FirebaseAnalyticsServicing {
+class FirebaseAnalyticsServiceStub: FirebaseAnalyticsService {
     func logEvent(_ event: String, parameters: [String: NSObject]?) {
         recordedEvents.append(FirebaseRecordedEvent(event: event, parameters: parameters))
     }
