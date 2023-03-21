@@ -17,7 +17,7 @@ protocol AlertingView {
 }
 
 struct AlertAction {
-    var title: String
-    var style: AlertActionStyle = .default
-    var handler: VoidHandler? = nil
+    let title: String
+    let style: AlertActionStyle = .default
+    let handler: VoidHandler? = nil
 }
