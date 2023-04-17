@@ -78,6 +78,7 @@
 		0888AC1A29BBE1FF00E0E9F4 /* Payment.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0888AC1C29BBE1FF00E0E9F4 /* Payment.strings */; };
 		0888AC1E29BBEB4000E0E9F4 /* Localizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0888AC1D29BBEB4000E0E9F4 /* Localizing.swift */; };
 		088D502C25CB60A50073E046 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 088D502B25CB60A50073E046 /* Cart.storyboard */; };
+		088F180929ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F180829ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift */; };
 		089C72E3299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 089C72E2299CDDD000986B97 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		089C72E6299CDE6C00986B97 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 089C72E5299CDE6C00986B97 /* FacebookCore */; };
 		089CC10B25EBC1FA002963B9 /* CartRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089CC10A25EBC1FA002963B9 /* CartRules.swift */; };
@@ -173,6 +174,7 @@
 		0888AC1B29BBE1FF00E0E9F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Payment.strings; sourceTree = "<group>"; };
 		0888AC1D29BBEB4000E0E9F4 /* Localizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizing.swift; sourceTree = "<group>"; };
 		088D502B25CB60A50073E046 /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		088F180829ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueCartLoadingDecorator.swift; sourceTree = "<group>"; };
 		089CC10A25EBC1FA002963B9 /* CartRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRules.swift; sourceTree = "<group>"; };
 		08CE88F625790D1600BEE7EF /* fake-api.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "fake-api.json"; sourceTree = "<group>"; };
 		08FF955125812BC00095A408 /* FirebaseTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseTracker.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */,
 				0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */,
 				08CE88F625790D1600BEE7EF /* fake-api.json */,
+				088F180829ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -541,6 +544,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		088F180529ED717B0096F7C7 /* MemoryManagement */ = {
+			isa = PBXGroup;
+			children = (
+				0888AC0E29BA37AF00E0E9F4 /* WeakReferenceProxy.swift */,
+			);
+			path = MemoryManagement;
+			sourceTree = "<group>";
+		};
 		08CE88E9257806D600BEE7EF /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,7 +574,7 @@
 		08FDD95225AF141A00A5D0AE /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				0888AC0E29BA37AF00E0E9F4 /* WeakReferenceProxy.swift */,
+				088F180529ED717B0096F7C7 /* MemoryManagement */,
 				08CE88FD25791F4000BEE7EF /* MobileShopAPI */,
 				0878FF44257996C9007E037E /* Tracking */,
 				0839E6A5257A7B89006FB959 /* View */,
@@ -728,6 +739,7 @@
 				083B88C9257A84240073140C /* FacebookAnalyticsService.swift in Sources */,
 				080B868629BF51B40083D0FA /* PaymentService.swift in Sources */,
 				087AC890257666AB006FF4E6 /* CartRemoteStore.swift in Sources */,
+				088F180929ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift in Sources */,
 				0878FF1225792E50007E037E /* PaymentComposer.swift in Sources */,
 				087AC880257663FF006FF4E6 /* Product.swift in Sources */,
 				087AC869257662E6006FF4E6 /* CartLoading.swift in Sources */,

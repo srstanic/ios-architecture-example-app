@@ -19,10 +19,13 @@ final class CartComposer: CartComposing {
     }
 
     func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController {
-        let cartViewController: CartViewController = .initFromStoryboard()
-
+        let cartViewController: CartViewController = .initFromStoryboard() { coder in
+            CartViewController(coder: coder)
+        }
         let mobileShopApiClient = URLSessionMobileShopAPIClient.development()
-        let cartLoader = CartRemoteService(apiClient: mobileShopApiClient)
+        let cartLoader = MainQueueCartLoadingDecorator(
+            decoratee: CartRemoteService(apiClient: mobileShopApiClient)
+        )
 
         let localizer = NSLocalizer(forType: CartPresenter.self, tableName: "Cart")
 

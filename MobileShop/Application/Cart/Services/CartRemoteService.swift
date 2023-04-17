@@ -18,18 +18,13 @@ final class CartRemoteService: CartLoading {
     private let discountsStore: DiscountsRemoteStore
 
     func loadCart(completion: @escaping CartResultHandler) {
-        let completionOnMainThread: CartResultHandler = { result in
-            DispatchQueue.main.async {
-                completion(result)
-            }
-        }
         cartStore.getCart { [weak self] cartResult in
             switch cartResult {
                 case .success(let remoteStoreCart):
-                    self?.getProductsAndDiscounts(for: remoteStoreCart, completion: completionOnMainThread)
+                    self?.getProductsAndDiscounts(for: remoteStoreCart, completion: completion)
                 case .failure(_):
                     // for simplicity just return a generic service error
-                    completionOnMainThread(.failure(CartLoadingError.failedToLoadCartData))
+                    completion(.failure(CartLoadingError.failedToLoadCartData))
             }
         }
     }
