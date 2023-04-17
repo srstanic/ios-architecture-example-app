@@ -9,9 +9,14 @@ import XCTest
 @testable import MobileShop
 
 class CartRemoteServiceTests: XCTestCase {
-    func testGetCart() throws {
-        let sut = buildSUT()
-        let cartResultExpectation = expectation(description: "Cart result received")
+    func testGetCartSuccessfullyLoadsCart() {
+        let cartResultExpectation = expectation(description: "Expected get cart result")
+
+        let (sut, apiClientStub) = buildSUT()
+        apiClientStub.cartResult = .success(Self.remoteStoreCart)
+        apiClientStub.productsResult = .success(Self.remoteStoreProducts)
+        apiClientStub.discountsResult = .success(Self.remoteStoreDiscounts)
+
         sut.loadCart { result in
             if case let .success(cart) = result {
                 XCTAssertEqual(cart.id, Self.remoteStoreCart.id)
@@ -24,14 +29,70 @@ class CartRemoteServiceTests: XCTestCase {
                 XCTAssertEqual(cart.discounts.map(\.amountAsPercentage), Self.remoteStoreDiscounts.map(\.amountAsPercentage))
                 cartResultExpectation.fulfill()
             } else {
-                XCTFail()
+                XCTFail("Expected to load cart data but got \(result) instead.")
             }
         }
         waitForExpectations(timeout: 0.1)
     }
 
-    private func buildSUT() -> CartRemoteService {
-        CartRemoteService(apiClient: MobileShopAPIClientStub())
+    func testGetCartFailsWhenCartLoadFails() {
+        let (sut, apiClientStub) = buildSUT()
+
+        expect(sut, toFailWith: .failedToLoadCartData, when: {
+            apiClientStub.cartResult = .failure(CartLoadingError.failedToLoadCartData)
+            apiClientStub.productsResult = .success(Self.remoteStoreProducts)
+            apiClientStub.discountsResult = .success(Self.remoteStoreDiscounts)
+
+        })
+    }
+
+    func testGetCartFailsWhenProductsLoadFails() {
+        let (sut, apiClientStub) = buildSUT()
+
+        expect(sut, toFailWith: .failedToLoadCartData, when: {
+            apiClientStub.cartResult = .success(Self.remoteStoreCart)
+            apiClientStub.productsResult = .failure(CartLoadingError.failedToLoadCartData)
+            apiClientStub.discountsResult = .success(Self.remoteStoreDiscounts)
+
+        })
+    }
+
+    func testGetCartFailsWhenDiscountsLoadFails() {
+        let (sut, apiClientStub) = buildSUT()
+
+        expect(sut, toFailWith: .failedToLoadCartData, when: {
+            apiClientStub.cartResult = .success(Self.remoteStoreCart)
+            apiClientStub.productsResult = .success(Self.remoteStoreProducts)
+            apiClientStub.discountsResult = .failure(CartLoadingError.failedToLoadCartData)
+
+        })
+    }
+
+    private func expect(
+        _ sut: CartLoading,
+        toFailWith expectedError: CartLoadingError,
+        when closure: VoidHandler,
+        file: StaticString = #filePath, line: UInt = #line
+    ) {
+        let cartResultExpectation = expectation(description: "Expected get cart result")
+
+        closure()
+
+        sut.loadCart { result in
+            if case let .failure(error) = result {
+                XCTAssertEqual(error as? CartLoadingError, expectedError)
+                cartResultExpectation.fulfill()
+            } else {
+                XCTFail("Expected to get load error but got \(result) instead.")
+            }
+        }
+        waitForExpectations(timeout: 0.1)
+    }
+
+    private func buildSUT() -> (CartLoading, MockMobileShopAPIClientStub) {
+        let apiClientStub = MockMobileShopAPIClientStub()
+        let cartLoader: CartRemoteService = CartRemoteService(apiClient: apiClientStub)
+        return (cartLoader, apiClientStub)
     }
 
     fileprivate static let remoteStoreCart: RemoteStoreCart = {
@@ -60,23 +121,27 @@ class CartRemoteServiceTests: XCTestCase {
     ]
 }
 
-fileprivate final class MobileShopAPIClientStub: MobileShopAPIClient {
+private final class MockMobileShopAPIClientStub: MobileShopAPIClient {
+    var cartResult: Result<RemoteStoreCart, Error>?
+    var productsResult: Result<[RemoteStoreProduct], Error>?
+    var discountsResult: Result<[RemoteStoreDiscount], Error>?
+
     func request<ModelType: Codable>(_ request: MobileShopAPIRequest, completion: @escaping (Result<ModelType, Error>) -> Void) {
         if
-            let model = CartRemoteServiceTests.remoteStoreCart as? ModelType,
-            request.path == "cart"
+            request.path == "cart",
+            let result = cartResult as? Result<ModelType, Error>
         {
-            completion(.success(model))
+            completion(result)
         } else if
-            let model = CartRemoteServiceTests.remoteStoreProducts as? ModelType,
-            request.path == "products"
+            request.path == "products",
+            let result = productsResult as? Result<ModelType, Error>
         {
-            completion(.success(model))
+            completion(result)
         } else if
-            let model = CartRemoteServiceTests.remoteStoreDiscounts as? ModelType,
-            request.path == "discounts"
+            request.path == "discounts",
+            let result = discountsResult as? Result<ModelType, Error>
         {
-            completion(.success(model))
+            completion(result)
         }
     }
 }

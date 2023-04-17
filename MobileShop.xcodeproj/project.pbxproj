@@ -511,12 +511,12 @@
 			isa = PBXGroup;
 			children = (
 				087AC868257662E6006FF4E6 /* CartLoading.swift */,
+				088F180829ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift */,
 				08137857257A626300FFE4AE /* CartRemoteService.swift */,
 				087AC88F257666AB006FF4E6 /* CartRemoteStore.swift */,
 				087AC8A02576677B006FF4E6 /* ProductsRemoteStore.swift */,
 				0878FEFF25792B0C007E037E /* DiscountsRemoteStore.swift */,
 				08CE88F625790D1600BEE7EF /* fake-api.json */,
-				088F180829ED74CF0096F7C7 /* MainQueueCartLoadingDecorator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

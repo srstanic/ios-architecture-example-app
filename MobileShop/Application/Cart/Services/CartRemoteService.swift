@@ -18,45 +18,24 @@ final class CartRemoteService: CartLoading {
     private let discountsStore: DiscountsRemoteStore
 
     func loadCart(completion: @escaping CartResultHandler) {
-        cartStore.getCart { [weak self] cartResult in
-            switch cartResult {
-                case .success(let remoteStoreCart):
-                    self?.getProductsAndDiscounts(for: remoteStoreCart, completion: completion)
-                case .failure(_):
-                    // for simplicity just return a generic service error
-                    completion(.failure(CartLoadingError.failedToLoadCartData))
+        Task {
+            do {
+                let remoteCart = try await cartStore.getCart()
+                let productIds = remoteCart.productItems.map(\.productId)
+                async let remoteProducts = productsStore.getProducts(withIds: productIds)
+                async let remoteDiscounts = discountsStore.getDiscounts(withIds: remoteCart.discountIds)
+                let cart = Cart.map(from: remoteCart, try await remoteProducts, try await remoteDiscounts)
+                completion(.success(cart))
+            } catch {
+                completion(.failure(CartLoadingError.failedToLoadCartData))
             }
-        }
-    }
 
-    private func getProductsAndDiscounts(
-        for remoteStoreCart: RemoteStoreCart,
-        completion: @escaping CartResultHandler
-    ) {
-        let productIds = remoteStoreCart.productItems.map(\.productId)
-        productsStore.getProducts(withIds: productIds) { [weak self] productsResult in
-            switch productsResult {
-                case .success(let remoteStoreProducts):
-                    self?.discountsStore.getDiscounts(withIds: remoteStoreCart.discountIds) { discountsResult in
-                        switch discountsResult {
-                            case .success(let remoteStoreDiscounts):
-                                let cart = Cart.map(from: remoteStoreCart, remoteStoreProducts, remoteStoreDiscounts)
-                                completion(.success(cart))
-                            case .failure(_):
-                                // for simplicity just return a generic service error
-                                completion(.failure(CartLoadingError.failedToLoadCartData))
-                        }
-                    }
-                case .failure(_):
-                    // for simplicity just return a generic service error
-                    completion(.failure(CartLoadingError.failedToLoadCartData))
-            }
         }
     }
 }
 
-extension Cart {
-    fileprivate static func map(
+private extension Cart {
+    static func map(
         from remoteStoreCart: RemoteStoreCart,
         _ remoteStoreProducts: [RemoteStoreProduct],
         _ remoteStoreDiscounts: [RemoteStoreDiscount]
@@ -97,18 +76,50 @@ extension Cart {
     }
 }
 
-extension Product {
-    fileprivate static func map(from remoteStoreProduct: RemoteStoreProduct) -> Self {
+private extension Product {
+    static func map(from remoteStoreProduct: RemoteStoreProduct) -> Self {
         return .init(id: remoteStoreProduct.id, title: remoteStoreProduct.title, price: remoteStoreProduct.price)
     }
 }
-extension Discount {
-    fileprivate static func map(from remoteStoreDiscount: RemoteStoreDiscount) -> Self {
+
+private extension Discount {
+    static func map(from remoteStoreDiscount: RemoteStoreDiscount) -> Self {
         return .init(
             id: remoteStoreDiscount.id,
             title: remoteStoreDiscount.title,
             amountAsPercentage: remoteStoreDiscount.amountAsPercentage,
             productId: remoteStoreDiscount.productId
         )
+    }
+}
+
+private extension CartRemoteStore {
+    func getCart() async throws -> RemoteStoreCart {
+        try await withCheckedThrowingContinuation { continuation in
+            getCart { result in
+                continuation.resume(with: result)
+            }
+        }
+    }
+}
+
+private extension ProductsRemoteStore {
+    func getProducts(withIds productIds: [String]) async throws -> [RemoteStoreProduct] {
+        try await withCheckedThrowingContinuation { continuation in
+            getProducts(withIds: productIds) { result in
+                continuation.resume(with: result)
+            }
+        }
+    }
+}
+
+
+private extension DiscountsRemoteStore {
+    func getDiscounts(withIds discountIds: [String]) async throws -> [RemoteStoreDiscount] {
+        try await withCheckedThrowingContinuation({ continuation in
+            getDiscounts(withIds: discountIds) { result in
+                continuation.resume(with: result)
+            }
+        })
     }
 }
