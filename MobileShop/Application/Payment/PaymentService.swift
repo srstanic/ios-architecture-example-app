@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol PaymentService {
+public protocol PaymentService {
     func processPayment(for amount: Double, completion: @escaping (Result<Void, Error>) -> Void)
 }

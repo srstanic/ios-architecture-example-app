@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import MobileShop
+import MobileShop
 
 struct RecordedAlertContent: Equatable {
     let title: String?

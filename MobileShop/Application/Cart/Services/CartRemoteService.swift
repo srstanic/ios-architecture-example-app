@@ -17,7 +17,7 @@ final class CartRemoteService: CartLoading {
     private let productsStore: ProductsRemoteStore
     private let discountsStore: DiscountsRemoteStore
 
-    func loadCart(completion: @escaping CartResultHandler) {
+    public func loadCart(completion: @escaping CartResultHandler) {
         Task {
             do {
                 let remoteCart = try await cartStore.getCart()

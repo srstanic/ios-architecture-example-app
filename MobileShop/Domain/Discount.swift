@@ -7,9 +7,16 @@
 
 import Foundation
 
-struct Discount {
-    let id: String
-    let title: String
-    let amountAsPercentage: Int
-    let productId: String?
+public struct Discount {
+    public let id: String
+    public let title: String
+    public let amountAsPercentage: Int
+    public let productId: String?
+
+    public init(id: String, title: String, amountAsPercentage: Int, productId: String? = nil) {
+        self.id = id
+        self.title = title
+        self.amountAsPercentage = amountAsPercentage
+        self.productId = productId
+    }
 }

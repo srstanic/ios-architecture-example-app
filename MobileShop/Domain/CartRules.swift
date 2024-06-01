@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class CartRules {
-    static func calculateTotalPriceAmount(for cart: Cart) -> Double {
+public final class CartRules {
+    public static func calculateTotalPriceAmount(for cart: Cart) -> Double {
         var discountsByProductIdMap: [String: Int] = [:]
         let productDiscounts = cart.discounts.filter { $0.productId != nil }
         for discount in productDiscounts {

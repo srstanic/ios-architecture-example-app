@@ -7,18 +7,14 @@
 
 import UIKit
 
-protocol CartComposing {
-    func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController
-}
-
-final class CartComposer: CartComposing {
+public final class CartComposer: CartComposing {
     private let provideFirebaseAnalyticsService: () -> FirebaseAnalyticsService
 
-    init(provideFirebaseAnalyticsService: @escaping () -> FirebaseAnalyticsService) {
+    public init(provideFirebaseAnalyticsService: @escaping () -> FirebaseAnalyticsService) {
         self.provideFirebaseAnalyticsService = provideFirebaseAnalyticsService
     }
 
-    func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController {
+    public func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController {
         let cartViewController: CartViewController = .initFromStoryboard() { coder in
             CartViewController(coder: coder)
         }
@@ -48,6 +44,7 @@ final class CartComposer: CartComposing {
     }
 }
 
+// MARK: memory management
 
 extension WeakReferenceProxy: CartView where ReferenceType: CartView {
     func setPayButtonTitle(_ title: String) {
@@ -74,5 +71,23 @@ extension WeakReferenceProxy: TitledView where ReferenceType: TitledView {
 extension WeakReferenceProxy: LoadableView where ReferenceType: LoadableView {
     func setLoadingIndicatorVisibility(isHidden: Bool) {
         object?.setLoadingIndicatorVisibility(isHidden: isHidden)
+    }
+}
+
+// MARK: multithreading
+
+final class MainQueueCartLoadingDecorator: CartLoading {
+    private let decoratee: CartLoading
+
+    init(decoratee: CartLoading) {
+        self.decoratee = decoratee
+    }
+
+    func loadCart(completion: @escaping CartResultHandler) {
+        decoratee.loadCart { result in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
     }
 }

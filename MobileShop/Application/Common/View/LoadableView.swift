@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol LoadableView {
+public protocol LoadableView {
     func setLoadingIndicatorVisibility(isHidden: Bool)
 }

@@ -9,30 +9,35 @@ import Foundation
 
 // MARK: PaymentView & PaymentViewOutputs
 
-protocol PaymentView: AlertingView {
+public protocol PaymentView: AlertingView {
     func setAmountTitle(_ amountTitle: String)
     func setChargeNote(_ chargeNote: String)
     func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String)
     func showAmount(_ amount: String)
 }
 
-protocol PaymentViewOutputs: ViewOutputs {
+public protocol PaymentViewOutputs: ViewOutputs {
     func onPurchaseConfirmed()
 }
 
 // MARK: PaymentSceneOutputs
 
-protocol PaymentSceneOutputs {
+public protocol PaymentSceneOutputs {
     func onPurchaseCompleted()
 }
 
-final class PaymentPresenter: PaymentViewOutputs {
-    struct Dependencies {
+public final class PaymentPresenter: PaymentViewOutputs {
+    public struct Dependencies {
         let paymentService: PaymentService
         let localizer: Localizing
+
+        public init(paymentService: PaymentService, localizer: Localizing) {
+            self.paymentService = paymentService
+            self.localizer = localizer
+        }
     }
 
-    init(for amount: Double, dependencies: Dependencies, outputs: PaymentSceneOutputs) {
+    public init(for amount: Double, dependencies: Dependencies, outputs: PaymentSceneOutputs) {
         self.amount = amount
         self.dependencies = dependencies
         self.outputs = outputs
@@ -41,11 +46,11 @@ final class PaymentPresenter: PaymentViewOutputs {
     private let dependencies: Dependencies
     private let outputs: PaymentSceneOutputs
 
-    var view: PaymentView?
+    public var view: PaymentView?
 
     // MARK: PaymentViewOutputs
 
-    func onPurchaseConfirmed() {
+    public func onPurchaseConfirmed() {
         dependencies.paymentService.processPayment(for: amount) { [weak self] result in
             switch result {
             case .success:
@@ -75,18 +80,18 @@ final class PaymentPresenter: PaymentViewOutputs {
         )
     }
 
-    func onViewDidLoad() {
+    public func onViewDidLoad() {
         view?.setAmountTitle(dependencies.localizer.localize(.amountTitle))
         view?.setChargeNote(dependencies.localizer.localize(.chargeNote))
         view?.setConfirmPurchaseButtonTitle(dependencies.localizer.localize(.confirmPurchaseButtonTitle))
         view?.showAmount(dependencies.localizer.localize(.priceAmount, String(format: "%.2f", amount)))
     }
 
-    func onViewWillAppear() {}
+    public func onViewWillAppear() {}
 
-    func onViewDidAppear() {}
+    public func onViewDidAppear() {}
 
-    func onViewDidDisappear() {}
+    public func onViewDidDisappear() {}
 }
 
 private extension String {

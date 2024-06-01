@@ -7,9 +7,15 @@
 
 import Foundation
 
-struct Cart {
-    let id: String
-    let products: [ProductCartItem]
-    let discounts: [Discount]
+public struct Cart {
+    public let id: String
+    public let products: [ProductCartItem]
+    public let discounts: [Discount]
+
+    public init(id: String, products: [ProductCartItem], discounts: [Discount]) {
+        self.id = id
+        self.products = products
+        self.discounts = discounts
+    }
 }
 

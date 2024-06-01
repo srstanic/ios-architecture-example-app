@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Localizing {
+public protocol Localizing {
     func localize(_ key: String) -> String
     func localize(_ key: String, _ values: CVarArg... ) -> String
 }

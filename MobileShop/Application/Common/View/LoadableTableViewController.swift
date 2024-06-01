@@ -7,11 +7,11 @@
 
 import UIKit
 
-class LoadableTableViewController: UITableViewController, LoadableView {
+public class LoadableTableViewController: UITableViewController, LoadableView {
 
     // MARK: LoadableView
 
-    func setLoadingIndicatorVisibility(isHidden: Bool) {
+    public func setLoadingIndicatorVisibility(isHidden: Bool) {
         if isHidden {
             tableView.tableFooterView = UIView()
             loadingIndicatorView.stopAnimating()

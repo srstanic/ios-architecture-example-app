@@ -7,19 +7,19 @@
 
 import UIKit
 
-class CartViewController: LoadableTableViewController, CartView {
+public class CartViewController: LoadableTableViewController, CartView {
 
     // MARK: Outputs
 
-    var outputs: CartViewOutputs?
+    public var outputs: CartViewOutputs?
 
     // MARK: CartView
 
-    func setTitle(_ title: String) {
+    public func setTitle(_ title: String) {
         self.title = title
     }
 
-    func setPayButtonTitle(_ title: String) {
+    public func setPayButtonTitle(_ title: String) {
         setupPayButton(titled: title)
     }
 
@@ -36,7 +36,7 @@ class CartViewController: LoadableTableViewController, CartView {
         outputs?.onPaymentInitiated()
     }
 
-    func showCartContent(_ cartContent: CartViewContent) {
+    public func showCartContent(_ cartContent: CartViewContent) {
         self.dataSource = buildDataSource(for: cartContent)
         tableView.reloadData()
     }
@@ -44,7 +44,7 @@ class CartViewController: LoadableTableViewController, CartView {
 
     // MARK: Lifecycle
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         outputs?.onViewDidLoad()
@@ -57,7 +57,7 @@ class CartViewController: LoadableTableViewController, CartView {
     }
     private let cartItemCellReuseIdentifier = CartItemTableViewCell.reuseIdentifier
 
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         outputs?.onViewDidAppear()
     }
@@ -108,15 +108,15 @@ class CartViewController: LoadableTableViewController, CartView {
         return TableViewDataSource(sections: sections)
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    public override func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.sections.count
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.sections[section].numberOfRows
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cartItemCellReuseIdentifier, for: indexPath)
         cell.selectionStyle = .none
         dataSource.sections[indexPath.section].configure(cell, atRow: indexPath.row)
@@ -125,7 +125,7 @@ class CartViewController: LoadableTableViewController, CartView {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
 }

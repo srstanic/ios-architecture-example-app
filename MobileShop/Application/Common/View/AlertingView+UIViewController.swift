@@ -8,7 +8,7 @@
 import UIKit
 
 extension AlertingView where Self: UIViewController {
-    func showAlert(
+    public func showAlert(
         title: String?,
         message: String?,
         actions: [AlertAction],

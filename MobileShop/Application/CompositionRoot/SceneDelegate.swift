@@ -79,3 +79,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension PaymentCoordinator: PaymentCoordinating {}
+
+extension PaymentComposer: PaymentComposing {}

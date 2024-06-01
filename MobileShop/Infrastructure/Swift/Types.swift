@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias VoidHandler = () -> Void
+public typealias VoidHandler = () -> Void

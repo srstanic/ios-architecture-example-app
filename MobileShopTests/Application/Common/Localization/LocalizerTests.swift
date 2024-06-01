@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import MobileShop
+import MobileShop
 
 class LocalizerTests: XCTestCase {
     func testString() throws {

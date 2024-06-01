@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct ProductCartItem {
-    let product: Product
-    let quantity: Int
+public struct ProductCartItem {
+    public let product: Product
+    public let quantity: Int
+
+    public init(product: Product, quantity: Int) {
+        self.product = product
+        self.quantity = quantity
+    }
 }

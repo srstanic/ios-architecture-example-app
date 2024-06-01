@@ -7,42 +7,42 @@
 
 import UIKit
 
-class PaymentViewController: UIViewController, PaymentView {
+public class PaymentViewController: UIViewController, PaymentView {
 
     // MARK: Outputs
 
-    var outputs: PaymentViewOutputs?
+    public var outputs: PaymentViewOutputs?
 
     // MARK: PaymentView
 
-    func setAmountTitle(_ amountTitle: String) {
+    public func setAmountTitle(_ amountTitle: String) {
         amountTitleLabel.text = amountTitle
     }
     @IBOutlet private(set) weak var amountTitleLabel: UILabel!
 
-    func setChargeNote(_ chargeNote: String) {
+    public func setChargeNote(_ chargeNote: String) {
         chargeNoteLabel.text = chargeNote
     }
     @IBOutlet private(set) weak var chargeNoteLabel: UILabel!
 
-    func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String){
+    public func setConfirmPurchaseButtonTitle(_ confirmPurchaseButtonTitle: String){
         confirmPurchaseButton.setTitle(confirmPurchaseButtonTitle, for: .normal)
     }
     @IBOutlet private(set) weak var confirmPurchaseButton: UIButton!
 
-    func showAmount(_ amount: String) {
+    public func showAmount(_ amount: String) {
         amountValueLabel.text = amount
     }
     @IBOutlet private(set) weak var amountValueLabel: UILabel!
 
     // MARK: Lifecycle
 
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         outputs?.onViewDidAppear()
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         outputs?.onViewDidLoad()
     }

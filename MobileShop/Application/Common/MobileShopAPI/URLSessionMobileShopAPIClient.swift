@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class URLSessionMobileShopAPIClient: MobileShopAPIClient {
-    init(scheme: String, host: String, pathPrefix: String) {
+public final class URLSessionMobileShopAPIClient: MobileShopAPIClient {
+    public init(scheme: String, host: String, pathPrefix: String) {
         self.scheme = scheme
         self.host = host
         self.pathPrefix = pathPrefix
@@ -17,7 +17,7 @@ final class URLSessionMobileShopAPIClient: MobileShopAPIClient {
     private let host: String
     private let pathPrefix: String
 
-    func request<ModelType: Codable>(
+    public func request<ModelType: Codable>(
         _ request: MobileShopAPIRequest,
         completion: @escaping (Result<ModelType, Error>) -> Void
     ) {

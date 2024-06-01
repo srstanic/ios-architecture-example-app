@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAnalytics
 
-protocol FirebaseAnalyticsService {
+public protocol FirebaseAnalyticsService {
     func logEvent(_ event: String, parameters: [String: NSObject]?)
 }
 

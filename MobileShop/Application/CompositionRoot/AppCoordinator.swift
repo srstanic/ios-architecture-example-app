@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CartCoordinating {
+    func transitionToCartScene(in navigationController: UINavigationController, animated: Bool)
+}
+
 final class AppCoordinator {
     let cartCoordinator: CartCoordinating
 
@@ -22,3 +26,5 @@ final class AppCoordinator {
         window.makeKeyAndVisible()
     }
 }
+
+extension CartCoordinator: CartCoordinating {}

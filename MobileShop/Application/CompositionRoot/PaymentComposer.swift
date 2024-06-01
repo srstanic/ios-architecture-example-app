@@ -7,19 +7,12 @@
 
 import UIKit
 
-protocol PaymentComposing {
-    func composePaymentScene(
-        for amount: Double,
-        with outputs: PaymentSceneOutputs
-    ) -> UIViewController
-}
-
-final class PaymentComposer: PaymentComposing {
+public final class PaymentComposer {
     private let providePaymentService: () -> PaymentService
     private let provideFirebaseAnalyticsService: () -> FirebaseAnalyticsService
     private let provideFacebookAnalyticsService: () -> FacebookAnalyticsService
 
-    init(
+    public init(
         providePaymentService: @escaping () -> PaymentService,
         provideFirebaseAnalyticsService: @escaping () -> FirebaseAnalyticsService,
         provideFacebookAnalyticsService: @escaping () -> FacebookAnalyticsService
@@ -29,7 +22,7 @@ final class PaymentComposer: PaymentComposing {
         self.provideFacebookAnalyticsService = provideFacebookAnalyticsService
     }
 
-    func composePaymentScene(
+    public func composePaymentScene(
         for amount: Double,
         with outputs: PaymentSceneOutputs
     ) -> UIViewController {

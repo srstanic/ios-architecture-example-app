@@ -7,26 +7,29 @@
 
 import UIKit
 
-protocol PaymentCoordinating {
-    func transitionToPaymentScene(
-        with amount: Double,
-        over viewController: UIViewController,
-        animated: Bool
-    )
+public protocol PaymentComposing {
+    func composePaymentScene(
+        for amount: Double,
+        with outputs: PaymentSceneOutputs
+    ) -> UIViewController
 }
 
-final class PaymentCoordinator: PaymentCoordinating {
-    struct Dependencies {
+public final class PaymentCoordinator {
+    public struct Dependencies {
         let composer: PaymentComposing
+
+        init(composer: PaymentComposing) {
+            self.composer = composer
+        }
     }
 
-    init(dependencies: Dependencies) {
+    public init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
     private let dependencies: Dependencies
     private weak var presentingViewController: UIViewController?
 
-    func transitionToPaymentScene(
+    public func transitionToPaymentScene(
         with amount: Double,
         over viewController: UIViewController,
         animated: Bool
@@ -38,7 +41,7 @@ final class PaymentCoordinator: PaymentCoordinating {
 }
 
 extension PaymentCoordinator: PaymentSceneOutputs {
-    func onPurchaseCompleted() {
+    public func onPurchaseCompleted() {
         presentingViewController?.dismiss(animated: true)
     }
 }

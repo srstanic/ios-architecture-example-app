@@ -7,23 +7,36 @@
 
 import UIKit
 
-protocol CartCoordinating {
-    func transitionToCartScene(in navigationController: UINavigationController, animated: Bool)
+public protocol CartComposing {
+    func composeCartScene(with outputs: CartSceneOutputs) -> UIViewController
 }
 
-final class CartCoordinator: CartCoordinating {
-    struct Dependencies {
+public protocol PaymentCoordinating {
+    func transitionToPaymentScene(
+        with amount: Double,
+        over viewController: UIViewController,
+        animated: Bool
+    )
+}
+
+public final class CartCoordinator {
+    public struct Dependencies {
         let composer: CartComposing
         let paymentCoordinator: PaymentCoordinating
+
+        public init(composer: CartComposing, paymentCoordinator: PaymentCoordinating) {
+            self.composer = composer
+            self.paymentCoordinator = paymentCoordinator
+        }
     }
 
-    init(dependencies: Dependencies) {
+    public init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
     private let dependencies: Dependencies
     private weak var navigationController: UINavigationController?
 
-    func transitionToCartScene(in navigationController: UINavigationController, animated: Bool) {
+    public func transitionToCartScene(in navigationController: UINavigationController, animated: Bool) {
         let cartScene = dependencies.composer.composeCartScene(with: self)
         navigationController.pushViewController(cartScene, animated: animated)
         self.navigationController = navigationController
@@ -31,7 +44,7 @@ final class CartCoordinator: CartCoordinating {
 }
 
 extension CartCoordinator: CartSceneOutputs {
-    func onDidChooseToPay(for amount: Double) {
+    public func onDidChooseToPay(for amount: Double) {
         guard let navigationController = self.navigationController else {
             return
         }

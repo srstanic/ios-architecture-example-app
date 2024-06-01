@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import MobileShop
+import MobileShop
 
 final class CartSceneAnalyticsTests: XCTestCase {
     private var firebaseAnalyticsServiceStub: FirebaseAnalyticsServiceStub!

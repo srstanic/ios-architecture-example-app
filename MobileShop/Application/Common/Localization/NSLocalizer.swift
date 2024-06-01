@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NSLocalizer: Localizing {
+public final class NSLocalizer: Localizing {
     let bundle: Bundle
     let tableName: String
 
@@ -16,15 +16,15 @@ final class NSLocalizer: Localizing {
         self.tableName = tableName
     }
 
-    convenience init(forType type: AnyClass, tableName: String) {
+    public convenience init(forType type: AnyClass, tableName: String) {
         self.init(bundle: Bundle(for: type), tableName: tableName)
     }
 
-    func localize(_ key: String) -> String {
+    public func localize(_ key: String) -> String {
         NSLocalizedString(key, tableName: tableName, bundle: bundle, value: key, comment: "")
     }
 
-    func localize(_ key: String, _ values: CVarArg...) -> String {
+    public func localize(_ key: String, _ values: CVarArg...) -> String {
         return String(format: localize(key), arguments: values)
     }
 }

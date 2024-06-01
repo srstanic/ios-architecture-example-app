@@ -9,62 +9,81 @@ import Foundation
 
 // MARK: CartView & CartViewOutputs
 
-protocol CartView: TitledView, LoadableView, AlertingView {
+public protocol CartView: TitledView, LoadableView, AlertingView {
     func setPayButtonTitle(_ title: String)
     func showCartContent(_ cartContent: CartViewContent)
 }
 
-struct CartViewContent {
-    let products: [CartProductItemViewContent]
-    let discounts: [CartDiscountViewContent]
-    let total: CartTotalViewContent
+public struct CartViewContent {
+    public let products: [CartProductItemViewContent]
+    public let discounts: [CartDiscountViewContent]
+    public let total: CartTotalViewContent
 }
 
-struct CartProductItemViewContent {
-    let title: String
-    let price: String
-    let quantity: String
-    let discount: String?
+public struct CartProductItemViewContent {
+    public let title: String
+    public let price: String
+    public let quantity: String
+    public let discount: String?
 }
 
-struct CartDiscountViewContent {
-    let title: String
-    let discount: String
+public struct CartDiscountViewContent {
+    public let title: String
+    public let discount: String
 }
 
-struct CartTotalViewContent {
-    let title: String
-    let amount: String
+public struct CartTotalViewContent {
+    public let title: String
+    public let amount: String
 }
 
-protocol CartViewOutputs: AnyObject, ViewOutputs {
+public protocol CartViewOutputs: AnyObject, ViewOutputs {
     func onPaymentInitiated()
 }
 
 // MARK: CartSceneOutputs
 
-protocol CartSceneOutputs {
+public protocol CartSceneOutputs {
     func onDidChooseToPay(for amount: Double)
 }
 
-final class CartPresenter: CartViewOutputs {
-    struct Dependencies {
+// MARK: CartLoading
+
+public typealias CartResultHandler = (Result<Cart, Error>) -> Void
+
+public protocol CartLoading {
+    func loadCart(completion: @escaping CartResultHandler)
+}
+
+public enum CartLoadingError: Error {
+    case failedToLoadCartData
+}
+
+// MARK: CartPresenter
+
+public final class CartPresenter: CartViewOutputs {
+    public struct Dependencies {
         let cartLoader: CartLoading
         let localizer: Localizing
+
+        public init(cartLoader: any CartLoading, localizer: any Localizing) {
+            self.cartLoader = cartLoader
+            self.localizer = localizer
+        }
     }
 
-    init(dependencies: Dependencies, outputs: CartSceneOutputs) {
+    public init(dependencies: Dependencies, outputs: CartSceneOutputs) {
         self.dependencies = dependencies
         self.outputs = outputs
     }
     private let dependencies: Dependencies
     private let outputs: CartSceneOutputs
 
-    var view: CartView?
+    public var view: CartView?
 
     // MARK: CartViewOutputs
 
-    func onViewDidLoad() {
+    public func onViewDidLoad() {
         view?.setTitle(dependencies.localizer.localize(.title))
         view?.setPayButtonTitle(dependencies.localizer.localize(.payButtonTitle))
 
@@ -115,13 +134,13 @@ final class CartPresenter: CartViewOutputs {
         )
     }
 
-    func onViewWillAppear() {}
+    public func onViewWillAppear() {}
 
-    func onViewDidAppear() {}
+    public func onViewDidAppear() {}
 
-    func onViewDidDisappear() {}
+    public func onViewDidDisappear() {}
 
-    func onPaymentInitiated() {
+    public func onPaymentInitiated() {
         outputs.onDidChooseToPay(for: cartTotal)
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import MobileShop
+import MobileShop
 
 class CartPresenterTests: XCTestCase {
     private var cartLoaderStub: CartLoaderStub!

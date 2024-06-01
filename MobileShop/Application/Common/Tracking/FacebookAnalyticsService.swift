@@ -8,7 +8,7 @@
 import Foundation
 import FBSDKCoreKit
 
-protocol FacebookAnalyticsService {
+public protocol FacebookAnalyticsService {
     func logEvent(_ event: String, parameters: [String: NSObject]?)
 }
 

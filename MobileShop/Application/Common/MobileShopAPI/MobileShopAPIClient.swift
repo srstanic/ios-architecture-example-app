@@ -7,15 +7,15 @@
 
 import Foundation
 
-enum MobileShopAPIClientError: Error {
+public enum MobileShopAPIClientError: Error {
     case failedToLoadModel
 }
 
-struct MobileShopAPIRequest: Equatable {
-    let path: String
+public struct MobileShopAPIRequest: Equatable {
+    public let path: String
 }
 
-protocol MobileShopAPIClient {
+public protocol MobileShopAPIClient {
     func request<ModelType: Codable>(
         _ request: MobileShopAPIRequest,
         completion: @escaping (Result<ModelType, Error>) -> Void

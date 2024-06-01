@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import MobileShop
+import MobileShop
 
 final class LocalizerStub: Localizing {
     func localize(_ key: String) -> String {

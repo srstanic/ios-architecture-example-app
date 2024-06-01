@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias AlertActionStyle = UIAlertAction.Style
+public typealias AlertActionStyle = UIAlertAction.Style
 
 extension UIAlertController {
     static func create(

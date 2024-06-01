@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AlertingView {
+public protocol AlertingView {
     func showAlert(
         title: String?,
         message: String?,
@@ -16,8 +16,8 @@ protocol AlertingView {
     )
 }
 
-struct AlertAction {
-    let title: String
-    let style: AlertActionStyle = .default
-    let handler: VoidHandler? = nil
+public struct AlertAction {
+    public let title: String
+    public let style: AlertActionStyle = .default
+    public let handler: VoidHandler? = nil
 }

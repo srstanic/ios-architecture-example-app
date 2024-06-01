@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ViewOutputs {
+public protocol ViewOutputs {
     func onViewDidLoad()
     func onViewWillAppear()
     func onViewDidAppear()

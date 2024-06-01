@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol TitledView {
+public protocol TitledView {
     func setTitle(_ title: String)
 }

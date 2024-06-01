@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import MobileShop
+import MobileShop
 
 struct FirebaseRecordedEvent: Equatable {
     let event: String
