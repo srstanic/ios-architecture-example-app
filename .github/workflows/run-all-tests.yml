@@ -11,12 +11,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-   clean-build-test:
+  clean-build-test:
     runs-on: macos-14
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_16.2.app && /usr/bin/xcodebuild -version
-    - name: Run tests
-      run: xcodebuild clean build test -project MobileShop.xcodeproj -scheme MobileShop -sdk iphonesimulator -destination "platform=iOS Simulator,OS=18.1,name=iPhone 16" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+      - uses: actions/checkout@v3
+      - name: List available simulators
+        run: xcrun simctl list devices
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_15.4.app && /usr/bin/xcodebuild -version
+      - name: Run tests
+        run: xcodebuild clean build test -project MobileShop.xcodeproj -scheme MobileShop -sdk iphonesimulator -destination "platform=iOS Simulator,OS=17.5,name=iPhone 15" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
