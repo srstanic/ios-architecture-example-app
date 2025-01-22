@@ -66,7 +66,7 @@ public final class CartPresenter: CartViewOutputs {
         let cartLoader: CartLoading
         let localizer: Localizing
 
-        public init(cartLoader: any CartLoading, localizer: any Localizing) {
+        public init(cartLoader: CartLoading, localizer: Localizing) {
             self.cartLoader = cartLoader
             self.localizer = localizer
         }
