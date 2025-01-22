@@ -37,7 +37,7 @@ public struct CartTotalViewContent {
     public let amount: String
 }
 
-public protocol CartViewOutputs: AnyObject, ViewOutputs {
+public protocol CartViewOutputs: ViewOutputs {
     func onPaymentInitiated()
 }
 
