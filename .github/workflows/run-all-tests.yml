@@ -12,11 +12,11 @@ concurrency:
 
 jobs:
    clean-build-test:
-    runs-on: macos-12
+    runs-on: macos-14
 
     steps:
     - uses: actions/checkout@v3
     - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_14.2.app && /usr/bin/xcodebuild -version
+      run: sudo xcode-select -switch /Applications/Xcode_16.2.app && /usr/bin/xcodebuild -version
     - name: Run tests
-      run: xcodebuild clean build test -project MobileShop.xcodeproj -scheme MobileShop -sdk iphonesimulator -destination "platform=iOS Simulator,OS=16.2,name=iPhone 14" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO 
+      run: xcodebuild clean build test -project MobileShop.xcodeproj -scheme MobileShop -sdk iphonesimulator -destination "platform=iOS Simulator,OS=18.1,name=iPhone 16" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
